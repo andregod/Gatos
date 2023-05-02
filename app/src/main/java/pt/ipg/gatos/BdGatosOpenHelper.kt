@@ -4,12 +4,13 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
+private const val NOME_BASE_DADOS = "gatos.db"
+
+private const val VERSAO_BASE_DADOS = 1
+
 class BdGatosOpenHelper(
-    context: Context?,
-    name: String?,
-    factory: SQLiteDatabase.CursorFactory?,
-    version: Int
-) : SQLiteOpenHelper(context, name, factory, version) {
+    context: Context?
+) : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSAO_BASE_DADOS) {
     /**
      * Called when the database is created for the first time. This is where the
      * creation of tables and the initial population of the tables should happen.
@@ -43,6 +44,14 @@ class BdGatosOpenHelper(
      * @param newVersion The new database version.
      */
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+        if (oldVersion == 1) {
+            // codigo para versao 2
+
+
+        }
+
+        if (oldVersion < 3) {
+
+        }
     }
 }
