@@ -6,10 +6,13 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="gatos">Gatos</string>
     <string name="anterior">Anterior</string>
-
-    <string name="lorem_ipsum">
+    <string name="nomeautor">
         Nome: André Filipe Santos Godinho
+    </string>
+    <string name="nrautor">
         Numero: 1703341
+    </string>
+    <string name="descricao_projeto">
         Descrição: Coleção de Dados (Database) de gatos no ambito da cadeira de Programação Avançada, através de Kotlin no Android Studio
     </string>
 </resources>
