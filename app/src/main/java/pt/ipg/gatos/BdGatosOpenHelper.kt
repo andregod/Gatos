@@ -4,7 +4,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-private const val NOME_BASE_DADOS = "gatos.db"
+//private const val NOME_BASE_DADOS = "gatos.db"
 
 private const val VERSAO_BASE_DADOS = 1
 
@@ -45,14 +45,10 @@ class BdGatosOpenHelper(
      * @param newVersion The new database version.
      */
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        if (oldVersion == 1) {
-            // codigo para versao 2
 
+    }
 
-        }
-
-        if (oldVersion < 3) {
-
-        }
+    companion object {
+        const val NOME_BASE_DADOS="gatos.db"
     }
 }
