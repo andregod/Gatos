@@ -2,6 +2,7 @@ package pt.ipg.gatos
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -41,8 +42,8 @@ class BDInstrumentedTest {
 
     fun consegueInserirCategorias() {
         val bd = getWritableDatabase()
-
-        val id = insereCategoria(bd)
+        val categoria = Categoria("Humor")
+        val id = insereCategoria(bd, categoria)
         assertNotEquals(-1, id )
 
 
@@ -58,7 +59,7 @@ class BDInstrumentedTest {
         val livro = Gato("O lixo na minha cabeça", categoria.id)
         insereLivro(bd,livro)
 
-        val livro2 = Gato("Novissimas cronicas da boca do inferno")
+        val livro2 = Gato("Novissimas cronicas da boca do inferno",categoria.id)
         insereLivro(bd, livro2)
     }
 
@@ -75,11 +76,46 @@ class BDInstrumentedTest {
         assertNotEquals(-1, categoria.id)
     }
 
+    @Test
+    fun consegueLerCategorias() {
+        val bd = getWritableDatabase()
+
+        val categoriaRom = Categoria("Romance")
+        insereCategoria(bd,categoriaRom)
+
+        val categoriaFic = Categoria("Ficção Cientifica")
+        insereCategoria(bd, categoriaFic)
+
+        val cursor = TabelaCategorias(bd).consultar(
+            TabelaCategorias.CAMPOS,
+            "${BaseColumns._ID}=?",
+            arrayOf(categoriaFic.id.toString()),
+            null,
+            null,
+            null
+        )
+
+        assert(cursor.moveToNext())
+
+        val categBD = Categoria.fromCursor(cursor)
+
+        assertEquals(categoriaFic, categBD)
+
+        val tabelaCategorias = TabelaCategorias(bd)
+        val cursorTodasCategorias = tabelaCategorias.consultar(
+            TabelaCategorias.CAMPOS,
+            null,null,null,null,TabelaCategorias.CAMPO_DESCRICAO
+        )
+
+        assert(cursorTodasCategorias.count>1)
+    }
+
     private fun getWritableDatabase(): SQLiteDatabase {
         val openHelper = BdGatosOpenHelper(getAppContext())
         val bd = openHelper.writableDatabase
         return bd
     }
+
 
 
 }

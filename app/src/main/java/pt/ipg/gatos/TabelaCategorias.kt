@@ -12,7 +12,9 @@ class TabelaCategorias(db: SQLiteDatabase) : TabelaBD(db, "Categorias") {
 
     companion object {
         const val NOME_TABELA = "categorias"
-
         const val CAMPO_DESCRICAO = "descricao"
+
+        val CAMPOS = arrayOf (BaseColumns._ID, CAMPO_DESCRICAO)
+
     }
 }
