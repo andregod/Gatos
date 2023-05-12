@@ -3,8 +3,9 @@ package pt.ipg.gatos
 import android.content.ContentValues
 
 data class Categoria(
-    var id: Long = -1,
-    var descricao: String) {
+    var descricao: String,
+    var id: Long = -1
+) {
 
     fun toContentValues() : ContentValues {
         val valores = ContentValues()

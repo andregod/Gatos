@@ -43,7 +43,7 @@ class BDInstrumentedTest {
         val bd= openHelper.writableDatabase
 
         val categoria = Categoria("Drama")
-        TabelaCategorias(bd).insere()
+        TabelaCategorias(bd).insere(categoria.toContentValues())
 
 
     }
