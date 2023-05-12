@@ -4,7 +4,7 @@ import android.content.ContentValues
 
 data class Gato(
     var titulo: String,
-    var idCategoria: Int,
+    var idCategoria: Long,
     var isbn: String? = null,
     var id: Long = -1
 ) {
