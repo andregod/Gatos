@@ -36,5 +36,17 @@ class BDInstrumentedTest {
         assertEquals("pt.ipg.gatos", appContext.packageName)
     }
 
+    @Test
+
+    fun consegueInserirCategorias() {
+        val openHelper = BdGatosOpenHelper(getAppContext())
+        val bd= openHelper.writableDatabase
+
+        val categoria = Categoria("Drama")
+        TabelaCategorias(bd).insere()
+
+
+    }
+
 
 }
