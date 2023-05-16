@@ -11,6 +11,7 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Before
+import java.util.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -63,6 +64,42 @@ class BDInstrumentedTest {
         insereLivro(bd, livro2)
     }
 
+    @Test
+    fun consegueLerLivros() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Contos")
+        insereCategoria(bd, categoria)
+
+        val livro1 = Gato("Todos os contos", categoria.id)
+        insereLivro(bd,livro1)
+
+        val dataPub = Calendar.getInstance()
+        dataPub.set(2016, 4, 1)
+
+        val livro2 = Gato("Cinderela",categoria.id,"978-1473683556", dataPub)
+        insereLivro(bd, livro2)
+
+        val tabelaLivros = TabelaGatos(bd)
+        val cursor = tabelaLivros.consultar(
+            TabelaGatos.CAMPOS,
+            null,null,null,null,TabelaCategorias.CAMPO_DESCRICAO
+        )
+
+        val livroBD = Gato.fromCursor(cursor)
+
+        assertEquals(livro1, livroBD)
+
+        val cursorTodosLivros = tabelaLivros.consultar(
+            TabelaCategorias.CAMPOS,
+            null,null,null,null,TabelaGatos.CAMPO_TITULO
+        )
+
+        assert(cursorTodosLivros.count>1)
+
+
+    }
+
     private fun insereLivro(bd: SQLiteDatabase, livro: Gato ) {
         livro.id = TabelaGatos(bd).insere(livro.toContentValues())
         assertNotEquals(-1, livro.id)
@@ -109,6 +146,9 @@ class BDInstrumentedTest {
 
         assert(cursorTodasCategorias.count>1)
     }
+
+
+
 
     private fun getWritableDatabase(): SQLiteDatabase {
         val openHelper = BdGatosOpenHelper(getAppContext())
