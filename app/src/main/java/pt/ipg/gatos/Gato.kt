@@ -18,7 +18,7 @@ data class Gato(
 
         valores.put(TabelaGatos.CAMPO_TITULO, titulo)
         valores.put(TabelaGatos.CAMPO_ISBN, isbn)
-        valores.put(TabelaGatos.CAMPO_DATA_PUB, dataPublicacao?.time)
+        valores.put(TabelaGatos.CAMPO_DATA_PUB, dataPublicacao?.timeInMillis)
         valores.put(TabelaGatos.CAMPO_FK_CATEGORIA, idCategoria)
 
         return valores
