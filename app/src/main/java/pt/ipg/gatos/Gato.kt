@@ -64,7 +64,7 @@ data class Gato(
             }
 
             val idade = cursor.getInt(posIdade)
-            val peso = cursor.getFloat(posPeso)
+            val peso = cursor.getDouble(posPeso)
             val nomeDono = cursor.getString(posNomeDono)
             val morada = cursor.getString(posMorada)
             val porteGato = cursor.getString(posPorteGato)
