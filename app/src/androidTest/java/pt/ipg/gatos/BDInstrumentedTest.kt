@@ -43,7 +43,7 @@ class BDInstrumentedTest {
 
     fun consegueInserirCategorias() {
         val bd = getWritableDatabase()
-        val categoria = Categoria("Humor")
+        val categoria = Categoria("Tuxedo", "Branco/Preto", "Médio")
         val id = insereCategoria(bd, categoria)
         assertNotEquals(-1, id )
 
@@ -54,14 +54,19 @@ class BDInstrumentedTest {
     fun consegueInserirLivros() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Humor")
+        val categoria = Categoria("Tuxedo", "Branco/Preto", "Médio")
         insereCategoria(bd, categoria)
 
-        val livro = Gato("O lixo na minha cabeça", categoria.id)
-        insereLivro(bd,livro)
+        val dataNasc= Calendar.getInstance()
+        dataNasc.set(2023, 2, 1)
 
-        val livro2 = Gato("Novissimas cronicas da boca do inferno",categoria.id)
-        insereLivro(bd, livro2)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
+        insereLivro(bd,gato)
+
+        val dataNasc2= Calendar.getInstance()
+        dataNasc2.set(2020, 3, 1)
+        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", categoria.id)
+        insereLivro(bd, gato2)
     }
 
     @Test
@@ -117,16 +122,16 @@ class BDInstrumentedTest {
     fun consegueLerCategorias() {
         val bd = getWritableDatabase()
 
-        val categoriaRom = Categoria("Romance")
-        insereCategoria(bd,categoriaRom)
+        val categoriaTux= Categoria("Tuxedo")
+        insereCategoria(bd,categoriaTux)
 
-        val categoriaFic = Categoria("Ficção Cientifica")
-        insereCategoria(bd, categoriaFic)
+        val categoriaPersa = Categoria("Persa")
+        insereCategoria(bd, categoriaPersa)
 
         val cursor = TabelaCategorias(bd).consultar(
             TabelaCategorias.CAMPOS,
             "${BaseColumns._ID}=?",
-            arrayOf(categoriaFic.id.toString()),
+            arrayOf(categoriaTux.id.toString()),
             null,
             null,
             null
@@ -136,12 +141,12 @@ class BDInstrumentedTest {
 
         val categBD = Categoria.fromCursor(cursor)
 
-        assertEquals(categoriaFic, categBD)
+        assertEquals(categoriaTux, categBD)
 
         val tabelaCategorias = TabelaCategorias(bd)
         val cursorTodasCategorias = tabelaCategorias.consultar(
             TabelaCategorias.CAMPOS,
-            null,null,null,null,TabelaCategorias.CAMPO_DESCRICAO
+            null,null,null,null,TabelaCategorias.CAMPO_NOMERACA
         )
 
         assert(cursorTodasCategorias.count>1)

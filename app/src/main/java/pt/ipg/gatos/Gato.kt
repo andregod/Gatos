@@ -8,9 +8,10 @@ import java.util.*
 data class Gato(
     var nome: String,
     var cor: String,
+    var genero: String,
     var dataNascimento: Calendar? = null,
     var idade: Int,
-    var peso: Float,
+    var peso: Double,
     var nomeDono: String,
     var morada: String,
     var porteGato: String,
@@ -24,6 +25,7 @@ data class Gato(
 
         valores.put(TabelaGatos.CAMPO_NOME, nome)
         valores.put(TabelaGatos.CAMPO_COR, cor)
+        valores.put(TabelaGatos.CAMPO_GENERO, genero)
         valores.put(TabelaGatos.CAMPO_DATA_NASC, dataNascimento?.timeInMillis)
         valores.put(TabelaGatos.CAMPO_IDADE, idade)
         valores.put(TabelaGatos.CAMPO_PESO, peso)
@@ -40,6 +42,7 @@ data class Gato(
             val posID = cursor.getColumnIndex(BaseColumns._ID)
             val posNome = cursor.getColumnIndex(TabelaGatos.CAMPO_NOME)
             val posCor = cursor.getColumnIndex(TabelaGatos.CAMPO_COR)
+            val posGenero = cursor.getColumnIndex(TabelaGatos.CAMPO_GENERO)
             val posDataNasc = cursor.getColumnIndex(TabelaGatos.CAMPO_DATA_NASC)
             val posIdade = cursor.getColumnIndex(TabelaGatos.CAMPO_IDADE)
             val posPeso = cursor.getColumnIndex(TabelaGatos.CAMPO_PESO)
@@ -51,7 +54,7 @@ data class Gato(
             val id = cursor.getLong(posID)
             val nome = cursor.getString(posNome)
             val cor= cursor.getString(posCor)
-
+            val genero=cursor.getString(posGenero)
             var dataNascimento: Calendar?
             if (cursor.isNull(posDataNasc)) {
                 dataNascimento = null
@@ -66,11 +69,10 @@ data class Gato(
             val morada = cursor.getString(posMorada)
             val porteGato = cursor.getString(posPorteGato)
 
-
             val idCategoria = cursor.getLong(posCategoriaFK)
 
 
-            return Gato(nome, cor, dataNascimento, idade, peso, nomeDono, morada, porteGato, idCategoria, id)
+            return Gato(nome, cor, genero, dataNascimento, idade, peso, nomeDono, morada, porteGato, idCategoria, id)
         }
     }
 
