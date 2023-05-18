@@ -73,34 +73,36 @@ class BDInstrumentedTest {
     fun consegueLerLivros() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Contos")
+        val categoria = Categoria("Tuxedo", "Branco/Preto", "Medio")
         insereCategoria(bd, categoria)
 
-        val livro1 = Gato("Todos os contos", categoria.id)
-        insereLivro(bd,livro1)
+        val dataNasc= Calendar.getInstance()
+        dataNasc.set(2023, 2, 1)
 
-        val dataPub = Calendar.getInstance()
-        dataPub.set(2016, 4, 1)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
+        insereLivro(bd,gato)
 
-        val livro2 = Gato("Cinderela",categoria.id,"978-1473683556", dataPub)
-        insereLivro(bd, livro2)
+        val dataNasc2= Calendar.getInstance()
+        dataNasc2.set(2020, 3, 1)
+        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", categoria.id)
+        insereLivro(bd, gato2)
 
-        val tabelaLivros = TabelaGatos(bd)
-        val cursor = tabelaLivros.consultar(
+        val tabelaGatos = TabelaGatos(bd)
+        val cursor = tabelaGatos.consultar(
             TabelaGatos.CAMPOS,
-            null,null,null,null,TabelaCategorias.CAMPO_DESCRICAO
+            null,null,null,null,TabelaCategorias.CAMPO_NOMERACA
         )
 
-        val livroBD = Gato.fromCursor(cursor)
+        val gatoBD = Gato.fromCursor(cursor)
 
-        assertEquals(livro1, livroBD)
+        assertEquals(gato, gatoBD)
 
-        val cursorTodosLivros = tabelaLivros.consultar(
+        val cursorTodosGatos = tabelaGatos.consultar(
             TabelaCategorias.CAMPOS,
-            null,null,null,null,TabelaGatos.CAMPO_TITULO
+            null,null,null,null,TabelaGatos.CAMPO_NOME
         )
 
-        assert(cursorTodosLivros.count>1)
+        assert(cursorTodosGatos.count>1)
 
 
     }
@@ -122,10 +124,10 @@ class BDInstrumentedTest {
     fun consegueLerCategorias() {
         val bd = getWritableDatabase()
 
-        val categoriaTux= Categoria("Tuxedo")
+        val categoriaTux= Categoria("Tuxedo", "Branco/Preto","Médio")
         insereCategoria(bd,categoriaTux)
 
-        val categoriaPersa = Categoria("Persa")
+        val categoriaPersa = Categoria("Persa", "Laranja/Branco", "Médio")
         insereCategoria(bd, categoriaPersa)
 
         val cursor = TabelaCategorias(bd).consultar(
