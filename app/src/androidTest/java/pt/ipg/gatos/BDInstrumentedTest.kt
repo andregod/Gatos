@@ -88,17 +88,20 @@ class BDInstrumentedTest {
         insereLivro(bd, gato2)
 
         val tabelaGatos = TabelaGatos(bd)
+
         val cursor = tabelaGatos.consultar(
             TabelaGatos.CAMPOS,
             null,null,null,null,TabelaCategorias.CAMPO_NOMERACA
         )
+
+        assert(cursor.moveToNext())
 
         val gatoBD = Gato.fromCursor(cursor)
 
         assertEquals(gato, gatoBD)
 
         val cursorTodosGatos = tabelaGatos.consultar(
-            TabelaCategorias.CAMPOS,
+            TabelaGatos.CAMPOS,
             null,null,null,null,TabelaGatos.CAMPO_NOME
         )
 
@@ -107,7 +110,10 @@ class BDInstrumentedTest {
 
     }
 
-    private fun insereLivro(bd: SQLiteDatabase, gato: Gato ) {
+    private fun insereLivro(
+        bd: SQLiteDatabase,
+        gato: Gato ) {
+
         gato.id = TabelaGatos(bd).insere(gato.toContentValues())
         assertNotEquals(-1, gato.id)
     }

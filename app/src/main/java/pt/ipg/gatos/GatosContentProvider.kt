@@ -2,6 +2,7 @@ package pt.ipg.gatos
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 
@@ -40,6 +41,7 @@ class GatosContentProvider: ContentProvider() {
      */
     override fun onCreate(): Boolean {
         bdOpenHelper = BdGatosOpenHelper(context)
+        return true
     }
 
     /**
@@ -207,6 +209,25 @@ class GatosContentProvider: ContentProvider() {
         selectionArgs: Array<out String>?
     ): Int {
         TODO("Not yet implemented")
+    }
+
+
+    companion object {
+        private const val AUTORIDADE = "pt.ipg.gatos"
+        const val GATOS = "livros"
+        const val RACAS = "racas"
+
+        private const val URI_RACAS = 100
+        private const val URI_GATOS = 200
+        fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
+            addURI(AUTORIDADE,RACAS, URI_RACAS)
+            addURI(AUTORIDADE, GATOS, URI_GATOS)
+
+
+            /*
+            content://pt.ipg.gatos/top10/gatos
+             */
+        }
     }
 
 
