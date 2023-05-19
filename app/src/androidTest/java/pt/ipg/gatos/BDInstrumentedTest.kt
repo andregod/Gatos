@@ -91,7 +91,7 @@ class BDInstrumentedTest {
 
         val cursor = tabelaGatos.consultar(
             TabelaGatos.CAMPOS,
-            null,null,null,null,TabelaCategorias.CAMPO_NOMERACA
+            null,null,null,null,TabelaRacas.CAMPO_NOMERACA
         )
 
         assert(cursor.moveToNext())
@@ -122,7 +122,7 @@ class BDInstrumentedTest {
         bd: SQLiteDatabase,
         raca: Raca) {
 
-        raca.id = TabelaCategorias(bd).insere(raca.toContentValues())
+        raca.id = TabelaRacas(bd).insere(raca.toContentValues())
         assertNotEquals(-1, raca.id)
     }
 
@@ -136,8 +136,8 @@ class BDInstrumentedTest {
         val racaPersa = Raca("Persa", "Laranja/Branco", "Médio")
         insereRaca(bd, racaPersa)
 
-        val cursor = TabelaCategorias(bd).consultar(
-            TabelaCategorias.CAMPOS,
+        val cursor = TabelaRacas(bd).consultar(
+            TabelaRacas.CAMPOS,
             "${BaseColumns._ID}=?",
             arrayOf(racaTux.id.toString()),
             null,
@@ -151,10 +151,10 @@ class BDInstrumentedTest {
 
         assertEquals(racaTux, categBD)
 
-        val tabelaCategorias = TabelaCategorias(bd)
-        val cursorTodasCategorias = tabelaCategorias.consultar(
-            TabelaCategorias.CAMPOS,
-            null,null,null,null,TabelaCategorias.CAMPO_NOMERACA
+        val tabelaRacas = TabelaRacas(bd)
+        val cursorTodasCategorias = tabelaRacas.consultar(
+            TabelaRacas.CAMPOS,
+            null,null,null,null,TabelaRacas.CAMPO_NOMERACA
         )
 
         assert(cursorTodasCategorias.count>1)
@@ -172,7 +172,7 @@ class BDInstrumentedTest {
         //Adicionar restantes campos
 
 
-        val registosAlterados = TabelaCategorias(bd).alterar(
+        val registosAlterados = TabelaRacas(bd).alterar(
             raca.toContentValues(),
             "${BaseColumns._ID}=?",
             arrayOf(raca.id.toString()))
@@ -232,7 +232,7 @@ class BDInstrumentedTest {
         insereRaca(bd,raca)
 
 
-        val registosAlterados = TabelaCategorias(bd).eliminar(
+        val registosAlterados = TabelaRacas(bd).eliminar(
             "${BaseColumns._ID}=?",
             arrayOf(raca.id.toString()))
 

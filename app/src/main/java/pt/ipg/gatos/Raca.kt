@@ -14,9 +14,9 @@ data class Raca(
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
 
-        valores.put(TabelaCategorias.CAMPO_NOMERACA, nomeRaca)
-        valores.put(TabelaCategorias.CAMPO_CORPRINCIPALRACA, corPrincipalRaca)
-        valores.put(TabelaCategorias.CAMPO_PORTERACA, PorteRaca)
+        valores.put(TabelaRacas.CAMPO_NOMERACA, nomeRaca)
+        valores.put(TabelaRacas.CAMPO_CORPRINCIPALRACA, corPrincipalRaca)
+        valores.put(TabelaRacas.CAMPO_PORTERACA, PorteRaca)
 
         return valores
     }
@@ -25,9 +25,9 @@ data class Raca(
     companion object {
         fun fromCursor(cursor: Cursor): Raca {
             val posID= cursor.getColumnIndex(BaseColumns._ID)
-            val posNomeRaca= cursor.getColumnIndex(TabelaCategorias.CAMPO_NOMERACA)
-            val posCorPrincipalRaca= cursor.getColumnIndex(TabelaCategorias.CAMPO_CORPRINCIPALRACA)
-            val posPorteRaca= cursor.getColumnIndex(TabelaCategorias.CAMPO_PORTERACA)
+            val posNomeRaca= cursor.getColumnIndex(TabelaRacas.CAMPO_NOMERACA)
+            val posCorPrincipalRaca= cursor.getColumnIndex(TabelaRacas.CAMPO_CORPRINCIPALRACA)
+            val posPorteRaca= cursor.getColumnIndex(TabelaRacas.CAMPO_PORTERACA)
 
             val id = cursor.getLong(posID)
             val nomeRaca = cursor.getString(posNomeRaca)
