@@ -166,7 +166,7 @@ class BDInstrumentedTest {
         //Adicionar restantes campos
 
 
-        val registosAlterados = TabelaCategorias(bd).altera(
+        val registosAlterados = TabelaCategorias(bd).alterar(
             categoria.toContentValues(),
             "${BaseColumns._ID}=?",
             arrayOf(categoria.id.toString()))
@@ -181,15 +181,12 @@ class BDInstrumentedTest {
     fun consegueAlterarLivros()  {
         val bd = getWritableDatabase()
 
-        val categoriaJuvenil = Categoria("Literatura Infanto-Juvenil")
-        insereCategoria(bd,categoriaJuvenil)
-
-        val categoria2 = Categoria("Literatura Nacional")
-        insereCategoria(bd,categoria2)
+        val categoria = Categoria("Maine", "Pequeno", "Branco")
+        insereCategoria(bd,categoria)
 
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria2.id)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
         insereLivro(bd,gato)
 
 
@@ -197,9 +194,16 @@ class BDInstrumentedTest {
         novaDataNasc.set(2023,2,2)
 
 
-        gato.idCategoria = categoriaJuvenil.id
+        gato.id = gato.id
         gato.nome = "Bloom"
+        gato.cor = "Castanho"
+        gato.genero = "Macho"
         gato.dataNascimento = novaDataNasc
+        gato.idade = 4
+        gato.peso = 4.5
+        gato.nomeDono = "Noel"
+        gato.morada = "Guarda"
+        gato.porteGato = "Grande"
         //Adicionar restantes campos
 
 
@@ -218,11 +222,8 @@ class BDInstrumentedTest {
     fun consegueApagarCategorias() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria('...')
+        val categoria = Categoria("Bengal", "Laranja", "Pequeno")
         insereCategoria(bd,categoria)
-
-        categoria.descricao = "Poesia"
-        //Adicionar restantes campos
 
 
         val registosAlterados = TabelaCategorias(bd).eliminar(
@@ -238,17 +239,14 @@ class BDInstrumentedTest {
     fun consegueApagarLivros() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Terror")
+        val categoria = Categoria("Burmes", "Branco/Castanho", "Pequeno")
         insereCategoria(bd,categoria)
 
         val novaDataNasc = Calendar.getInstance()
         novaDataNasc.set(2023,2,2)
 
-        val gato = Gato("Literatura Nacional", categoria.id)
+        val gato = Gato("TesteBurmes", "Branco/Preto", "Femea", novaDataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
         insereLivro(bd,gato)
-
-        //Adicionar restantes campos
-
 
         val registosAlterados = TabelaGatos(bd).eliminar(
             "${BaseColumns._ID}=?",
