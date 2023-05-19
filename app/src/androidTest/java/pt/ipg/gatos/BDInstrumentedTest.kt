@@ -41,51 +41,51 @@ class BDInstrumentedTest {
 
     @Test
 
-    fun consegueInserirCategorias() {
+    fun consegueInserirRacas() {
         val bd = getWritableDatabase()
-        val categoria = Categoria("Tuxedo", "Branco/Preto", "Médio")
-        val id = insereCategoria(bd, categoria)
+        val raca = Raca("Tuxedo", "Branco/Preto", "Médio")
+        val id = insereRaca(bd, raca)
         assertNotEquals(-1, id )
 
 
     }
 
     @Test
-    fun consegueInserirLivros() {
+    fun consegueInserirGatos() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Tuxedo", "Branco/Preto", "Médio")
-        insereCategoria(bd, categoria)
+        val raca = Raca("Tuxedo", "Branco/Preto", "Médio")
+        insereRaca(bd, raca)
 
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
 
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
-        insereLivro(bd,gato)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        insereGato(bd,gato)
 
         val dataNasc2= Calendar.getInstance()
         dataNasc2.set(2020, 3, 1)
-        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", categoria.id)
-        insereLivro(bd, gato2)
+        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca.id)
+        insereGato(bd, gato2)
     }
 
     @Test
-    fun consegueLerLivros() {
+    fun consegueLerGatos() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Tuxedo", "Branco/Preto", "Medio")
-        insereCategoria(bd, categoria)
+        val raca = Raca("Tuxedo", "Branco/Preto", "Medio")
+        insereRaca(bd, raca)
 
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
 
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
-        insereLivro(bd,gato)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        insereGato(bd,gato)
 
         val dataNasc2= Calendar.getInstance()
         dataNasc2.set(2020, 3, 1)
-        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", categoria.id)
-        insereLivro(bd, gato2)
+        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca.id)
+        insereGato(bd, gato2)
 
         val tabelaGatos = TabelaGatos(bd)
 
@@ -110,7 +110,7 @@ class BDInstrumentedTest {
 
     }
 
-    private fun insereLivro(
+    private fun insereGato(
         bd: SQLiteDatabase,
         gato: Gato ) {
 
@@ -118,28 +118,28 @@ class BDInstrumentedTest {
         assertNotEquals(-1, gato.id)
     }
 
-    private fun insereCategoria(
+    private fun insereRaca(
         bd: SQLiteDatabase,
-        categoria: Categoria) {
+        raca: Raca) {
 
-        categoria.id = TabelaCategorias(bd).insere(categoria.toContentValues())
-        assertNotEquals(-1, categoria.id)
+        raca.id = TabelaCategorias(bd).insere(raca.toContentValues())
+        assertNotEquals(-1, raca.id)
     }
 
     @Test
-    fun consegueLerCategorias() {
+    fun consegueLerRacas() {
         val bd = getWritableDatabase()
 
-        val categoriaTux= Categoria("Tuxedo", "Branco/Preto","Médio")
-        insereCategoria(bd,categoriaTux)
+        val racaTux= Raca("Tuxedo", "Branco/Preto","Médio")
+        insereRaca(bd,racaTux)
 
-        val categoriaPersa = Categoria("Persa", "Laranja/Branco", "Médio")
-        insereCategoria(bd, categoriaPersa)
+        val racaPersa = Raca("Persa", "Laranja/Branco", "Médio")
+        insereRaca(bd, racaPersa)
 
         val cursor = TabelaCategorias(bd).consultar(
             TabelaCategorias.CAMPOS,
             "${BaseColumns._ID}=?",
-            arrayOf(categoriaTux.id.toString()),
+            arrayOf(racaTux.id.toString()),
             null,
             null,
             null
@@ -147,9 +147,9 @@ class BDInstrumentedTest {
 
         assert(cursor.moveToNext())
 
-        val categBD = Categoria.fromCursor(cursor)
+        val categBD = Raca.fromCursor(cursor)
 
-        assertEquals(categoriaTux, categBD)
+        assertEquals(racaTux, categBD)
 
         val tabelaCategorias = TabelaCategorias(bd)
         val cursorTodasCategorias = tabelaCategorias.consultar(
@@ -162,20 +162,20 @@ class BDInstrumentedTest {
 
 
     @Test
-    fun consegueAlterarCategorias()  {
+    fun consegueAlterarRacas()  {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Maine", "Pequeno", "Branco")
-        insereCategoria(bd,categoria)
+        val raca = Raca("Maine", "Pequeno", "Branco")
+        insereRaca(bd,raca)
 
-        categoria.nomeRaca = "Poesia"
+        raca.nomeRaca = "Poesia"
         //Adicionar restantes campos
 
 
         val registosAlterados = TabelaCategorias(bd).alterar(
-            categoria.toContentValues(),
+            raca.toContentValues(),
             "${BaseColumns._ID}=?",
-            arrayOf(categoria.id.toString()))
+            arrayOf(raca.id.toString()))
 
 
             assertEquals(1, registosAlterados)
@@ -184,16 +184,16 @@ class BDInstrumentedTest {
 
 
     @Test
-    fun consegueAlterarLivros()  {
+    fun consegueAlterarGatos()  {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Maine", "Pequeno", "Branco")
-        insereCategoria(bd,categoria)
+        val raca = Raca("Maine", "Pequeno", "Branco")
+        insereRaca(bd,raca)
 
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
-        insereLivro(bd,gato)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        insereGato(bd,gato)
 
 
         val novaDataNasc = Calendar.getInstance()
@@ -225,16 +225,16 @@ class BDInstrumentedTest {
 
     @Test
 
-    fun consegueApagarCategorias() {
+    fun consegueApagarRacas() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Bengal", "Laranja", "Pequeno")
-        insereCategoria(bd,categoria)
+        val raca = Raca("Bengal", "Laranja", "Pequeno")
+        insereRaca(bd,raca)
 
 
         val registosAlterados = TabelaCategorias(bd).eliminar(
             "${BaseColumns._ID}=?",
-            arrayOf(categoria.id.toString()))
+            arrayOf(raca.id.toString()))
 
 
         assertEquals(1, registosAlterados)
@@ -242,17 +242,17 @@ class BDInstrumentedTest {
 
     @Test
 
-    fun consegueApagarLivros() {
+    fun consegueApagarGatos() {
         val bd = getWritableDatabase()
 
-        val categoria = Categoria("Burmes", "Branco/Castanho", "Pequeno")
-        insereCategoria(bd,categoria)
+        val raca = Raca("Burmes", "Branco/Castanho", "Pequeno")
+        insereRaca(bd,raca)
 
         val novaDataNasc = Calendar.getInstance()
         novaDataNasc.set(2023,2,2)
 
-        val gato = Gato("TesteBurmes", "Branco/Preto", "Femea", novaDataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
-        insereLivro(bd,gato)
+        val gato = Gato("TesteBurmes", "Branco/Preto", "Femea", novaDataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        insereGato(bd,gato)
 
         val registosAlterados = TabelaGatos(bd).eliminar(
             "${BaseColumns._ID}=?",

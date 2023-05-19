@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
 
-data class Categoria(
+data class Raca(
     var nomeRaca: String,
     var corPrincipalRaca: String,
     var PorteRaca: String,
@@ -23,7 +23,7 @@ data class Categoria(
 
 
     companion object {
-        fun fromCursor(cursor: Cursor): Categoria {
+        fun fromCursor(cursor: Cursor): Raca {
             val posID= cursor.getColumnIndex(BaseColumns._ID)
             val posNomeRaca= cursor.getColumnIndex(TabelaCategorias.CAMPO_NOMERACA)
             val posCorPrincipalRaca= cursor.getColumnIndex(TabelaCategorias.CAMPO_CORPRINCIPALRACA)
@@ -34,7 +34,7 @@ data class Categoria(
             val corPrincipalRaca = cursor.getString(posCorPrincipalRaca)
             val PorteRaca = cursor.getString(posPorteRaca)
 
-            return Categoria(nomeRaca, corPrincipalRaca, PorteRaca,id)
+            return Raca(nomeRaca, corPrincipalRaca, PorteRaca,id)
         }
 
     }
