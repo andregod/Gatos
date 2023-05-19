@@ -155,6 +155,110 @@ class BDInstrumentedTest {
     }
 
 
+    @Test
+    fun consegueAlterarCategorias()  {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Maine", "Pequeno", "Branco")
+        insereCategoria(bd,categoria)
+
+        categoria.nomeRaca = "Poesia"
+        //Adicionar restantes campos
+
+
+        val registosAlterados = TabelaCategorias(bd).altera(
+            categoria.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(categoria.id.toString()))
+
+
+            assertEquals(1, registosAlterados)
+
+    }
+
+
+    @Test
+    fun consegueAlterarLivros()  {
+        val bd = getWritableDatabase()
+
+        val categoriaJuvenil = Categoria("Literatura Infanto-Juvenil")
+        insereCategoria(bd,categoriaJuvenil)
+
+        val categoria2 = Categoria("Literatura Nacional")
+        insereCategoria(bd,categoria2)
+
+        val dataNasc= Calendar.getInstance()
+        dataNasc.set(2023, 2, 1)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria2.id)
+        insereLivro(bd,gato)
+
+
+        val novaDataNasc = Calendar.getInstance()
+        novaDataNasc.set(2023,2,2)
+
+
+        gato.idCategoria = categoriaJuvenil.id
+        gato.nome = "Bloom"
+        gato.dataNascimento = novaDataNasc
+        //Adicionar restantes campos
+
+
+        val registosAlterados = TabelaGatos(bd).alterar(
+            gato.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(gato.id.toString()))
+
+
+            assertEquals(1, registosAlterados)
+
+    }
+
+    @Test
+
+    fun consegueApagarCategorias() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria('...')
+        insereCategoria(bd,categoria)
+
+        categoria.descricao = "Poesia"
+        //Adicionar restantes campos
+
+
+        val registosAlterados = TabelaCategorias(bd).eliminar(
+            "${BaseColumns._ID}=?",
+            arrayOf(categoria.id.toString()))
+
+
+        assertEquals(1, registosAlterados)
+    }
+
+    @Test
+
+    fun consegueApagarLivros() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Terror")
+        insereCategoria(bd,categoria)
+
+        val novaDataNasc = Calendar.getInstance()
+        novaDataNasc.set(2023,2,2)
+
+        val gato = Gato("Literatura Nacional", categoria.id)
+        insereLivro(bd,gato)
+
+        //Adicionar restantes campos
+
+
+        val registosAlterados = TabelaGatos(bd).eliminar(
+            "${BaseColumns._ID}=?",
+            arrayOf(gato.id.toString()))
+
+
+        assertEquals(1, registosAlterados)
+    }
+
+
 
 
     private fun getWritableDatabase(): SQLiteDatabase {
