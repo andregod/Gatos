@@ -107,9 +107,9 @@ class BDInstrumentedTest {
 
     }
 
-    private fun insereLivro(bd: SQLiteDatabase, livro: Gato ) {
-        livro.id = TabelaGatos(bd).insere(livro.toContentValues())
-        assertNotEquals(-1, livro.id)
+    private fun insereLivro(bd: SQLiteDatabase, gato: Gato ) {
+        gato.id = TabelaGatos(bd).insere(gato.toContentValues())
+        assertNotEquals(-1, gato.id)
     }
 
     private fun insereCategoria(
