@@ -88,17 +88,20 @@ class BDInstrumentedTest {
         insereLivro(bd, gato2)
 
         val tabelaGatos = TabelaGatos(bd)
+
         val cursor = tabelaGatos.consultar(
             TabelaGatos.CAMPOS,
             null,null,null,null,TabelaCategorias.CAMPO_NOMERACA
         )
+
+        assert(cursor.moveToNext())
 
         val gatoBD = Gato.fromCursor(cursor)
 
         assertEquals(gato, gatoBD)
 
         val cursorTodosGatos = tabelaGatos.consultar(
-            TabelaCategorias.CAMPOS,
+            TabelaGatos.CAMPOS,
             null,null,null,null,TabelaGatos.CAMPO_NOME
         )
 
@@ -107,9 +110,12 @@ class BDInstrumentedTest {
 
     }
 
-    private fun insereLivro(bd: SQLiteDatabase, livro: Gato ) {
-        livro.id = TabelaGatos(bd).insere(livro.toContentValues())
-        assertNotEquals(-1, livro.id)
+    private fun insereLivro(
+        bd: SQLiteDatabase,
+        gato: Gato ) {
+
+        gato.id = TabelaGatos(bd).insere(gato.toContentValues())
+        assertNotEquals(-1, gato.id)
     }
 
     private fun insereCategoria(
@@ -152,6 +158,108 @@ class BDInstrumentedTest {
         )
 
         assert(cursorTodasCategorias.count>1)
+    }
+
+
+    @Test
+    fun consegueAlterarCategorias()  {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Maine", "Pequeno", "Branco")
+        insereCategoria(bd,categoria)
+
+        categoria.nomeRaca = "Poesia"
+        //Adicionar restantes campos
+
+
+        val registosAlterados = TabelaCategorias(bd).alterar(
+            categoria.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(categoria.id.toString()))
+
+
+            assertEquals(1, registosAlterados)
+
+    }
+
+
+    @Test
+    fun consegueAlterarLivros()  {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Maine", "Pequeno", "Branco")
+        insereCategoria(bd,categoria)
+
+        val dataNasc= Calendar.getInstance()
+        dataNasc.set(2023, 2, 1)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
+        insereLivro(bd,gato)
+
+
+        val novaDataNasc = Calendar.getInstance()
+        novaDataNasc.set(2023,2,2)
+
+
+        gato.id = gato.id
+        gato.nome = "Bloom"
+        gato.cor = "Castanho"
+        gato.genero = "Macho"
+        gato.dataNascimento = novaDataNasc
+        gato.idade = 4
+        gato.peso = 4.5
+        gato.nomeDono = "Noel"
+        gato.morada = "Guarda"
+        gato.porteGato = "Grande"
+        //Adicionar restantes campos
+
+
+        val registosAlterados = TabelaGatos(bd).alterar(
+            gato.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(gato.id.toString()))
+
+
+            assertEquals(1, registosAlterados)
+
+    }
+
+    @Test
+
+    fun consegueApagarCategorias() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Bengal", "Laranja", "Pequeno")
+        insereCategoria(bd,categoria)
+
+
+        val registosAlterados = TabelaCategorias(bd).eliminar(
+            "${BaseColumns._ID}=?",
+            arrayOf(categoria.id.toString()))
+
+
+        assertEquals(1, registosAlterados)
+    }
+
+    @Test
+
+    fun consegueApagarLivros() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Burmes", "Branco/Castanho", "Pequeno")
+        insereCategoria(bd,categoria)
+
+        val novaDataNasc = Calendar.getInstance()
+        novaDataNasc.set(2023,2,2)
+
+        val gato = Gato("TesteBurmes", "Branco/Preto", "Femea", novaDataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", categoria.id)
+        insereLivro(bd,gato)
+
+        val registosAlterados = TabelaGatos(bd).eliminar(
+            "${BaseColumns._ID}=?",
+            arrayOf(gato.id.toString()))
+
+
+        assertEquals(1, registosAlterados)
     }
 
 
