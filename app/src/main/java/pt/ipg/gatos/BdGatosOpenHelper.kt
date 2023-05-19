@@ -20,6 +20,7 @@ class BdGatosOpenHelper(
     override fun onCreate(db: SQLiteDatabase?) {
         requireNotNull(db)
         TabelaRacas(db!!).criar()
+        TabelaGatos(db!!).criar()
     }
 
     /**

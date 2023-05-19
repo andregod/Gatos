@@ -45,9 +45,15 @@ class BDInstrumentedTest {
         val bd = getWritableDatabase()
         val raca = Raca("Tuxedo", "Branco/Preto", "Médio")
         val id = insereRaca(bd, raca)
+
         assertNotEquals(-1, id )
+    }
+    private fun insereRaca(
+        bd: SQLiteDatabase,
+        raca: Raca) {
 
-
+        raca.id = TabelaRacas(bd).insere(raca.toContentValues())
+        assertNotEquals(-1, raca.id)
     }
 
     @Test
@@ -106,8 +112,6 @@ class BDInstrumentedTest {
         )
 
         assert(cursorTodosGatos.count>1)
-
-
     }
 
     private fun insereGato(
@@ -118,13 +122,7 @@ class BDInstrumentedTest {
         assertNotEquals(-1, gato.id)
     }
 
-    private fun insereRaca(
-        bd: SQLiteDatabase,
-        raca: Raca) {
 
-        raca.id = TabelaRacas(bd).insere(raca.toContentValues())
-        assertNotEquals(-1, raca.id)
-    }
 
     @Test
     fun consegueLerRacas() {
@@ -147,17 +145,17 @@ class BDInstrumentedTest {
 
         assert(cursor.moveToNext())
 
-        val categBD = Raca.fromCursor(cursor)
+        val racaBD = Raca.fromCursor(cursor)
 
-        assertEquals(racaTux, categBD)
+        assertEquals(racaTux, racaBD)
 
         val tabelaRacas = TabelaRacas(bd)
-        val cursorTodasCategorias = tabelaRacas.consultar(
+        val cursorTodasRacas = tabelaRacas.consultar(
             TabelaRacas.CAMPOS,
             null,null,null,null,TabelaRacas.CAMPO_NOMERACA
         )
 
-        assert(cursorTodasCategorias.count>1)
+        assert(cursorTodasRacas.count>1)
     }
 
 

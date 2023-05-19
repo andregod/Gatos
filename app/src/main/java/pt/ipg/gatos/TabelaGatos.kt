@@ -11,7 +11,7 @@ class TabelaGatos(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
     }
 
     companion object {
-        const val NOME_TABELA = "livros"
+        const val NOME_TABELA = "gatos"
         const val CAMPO_NOME = "nome"
         const val CAMPO_COR = "cor"
         const val CAMPO_GENERO = "genero"
