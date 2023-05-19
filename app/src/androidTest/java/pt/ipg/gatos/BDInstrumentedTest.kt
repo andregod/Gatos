@@ -97,7 +97,7 @@ class BDInstrumentedTest {
 
         val cursor = tabelaGatos.consultar(
             TabelaGatos.CAMPOS,
-            null,null,null,null,TabelaRacas.CAMPO_NOMERACA
+            null,null,null,null,null
         )
 
         assert(cursor.moveToNext())
