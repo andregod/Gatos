@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import android.provider.BaseColumns
 
 class GatosContentProvider: ContentProvider() {
 
@@ -118,7 +119,42 @@ class GatosContentProvider: ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+
+        val bd = bdOpenHelper!!.readableDatabase
+        val id =uri.lastPathSegment
+
+        // content://pt.ipg.livros/categorias/23
+
+        val endereco = uriMatcher().match(uri)
+
+        val tabela = when (endereco) {
+            URI_RACAS,URI_RACA_ID -> TabelaCategorias(bd)
+            URI_GATOS,URI_GATO_ID -> TabelaGatos(bd)
+            else -> null
+        }
+
+        val (selecao,argsSel) = when (endereco) {
+            URI_RACA_ID, URI_GATO_ID -> Pair("${BaseColumns._ID}=?" , arrayOf(id))
+            else -> Pair(selection,selectionArgs)
+        }
+
+        // content://pt.ipg.livros/livros
+        // selection = "nome LIKE '?%'
+        // selectionArgs = {'a'}
+
+        // conbtent://pt.ipg.livros/livros/5
+        // selection ="_id = ?"
+        // selectionArgs = { '5' }
+
+         return tabela?.consultar(
+                projection as Array<String>,
+                selecao,
+                argsSel as Array<String>?,
+                null,
+                null,
+                sortOrder
+         )
+
     }
 
     /**
@@ -218,14 +254,20 @@ class GatosContentProvider: ContentProvider() {
         const val RACAS = "racas"
 
         private const val URI_RACAS = 100
+        private const val URI_RACA_ID = 101
         private const val URI_GATOS = 200
+        private const val URI_GATO_ID = 201
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE,RACAS, URI_RACAS)
+            addURI(AUTORIDADE,"$RACAS/#", URI_RACA_ID)
             addURI(AUTORIDADE, GATOS, URI_GATOS)
-
+            addURI(AUTORIDADE, "GATOS/#", URI_GATO_ID)
 
             /*
-            content://pt.ipg.gatos/top10/gatos
+            content://pt.ipg.gatos/racas -> 100
+            content://pt.ipg.gatos/racas/5 -> 101
+            content://pt.ipg.gatos/gatos -> 200
+            content://pt.ipg.gatos/gatos/10 -> 201
              */
         }
     }
