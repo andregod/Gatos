@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/MenuPrincipalFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/MenuPrincipalFragment"
         android:name="pt.ipg.gatos.MenuPrincipalFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/Menu_Principal_label"
         tools:layout="@layout/fragment_menu_principal">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
+            app:destination="@id/SobreFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
+        android:id="@+id/SobreFragment"
         android:name="pt.ipg.gatos.SobreFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/sobre_fragment_label"
         tools:layout="@layout/fragment_sobre">
 
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_SobreFragment_to_MenuPrincipal_Fragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>

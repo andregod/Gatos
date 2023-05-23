@@ -2,8 +2,8 @@
     <string name="app_name">Gatos</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="menu_principal_label">Menu Principal</string>
+    <string name="sobre_fragment_label">Sobre</string>
     <string name="gatos">Gatos</string>
     <string name="anterior">Anterior</string>
     <string name="nomeautor">
