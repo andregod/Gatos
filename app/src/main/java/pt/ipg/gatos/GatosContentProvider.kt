@@ -177,7 +177,16 @@ class GatosContentProvider: ContentProvider() {
      * @return a MIME type string, or `null` if there is no type.
      */
     override fun getType(uri: Uri): String? {
-        TODO("Not yet implemented")
+        val endereco = uriMatcher().match(uri)
+
+        return when(endereco) {
+
+            URI_RACAS -> "vnd.android.cursor.dir/$RACAS"
+            URI_RACA_ID -> "vnd.android.cursor.item/$RACAS"
+            URI_GATOS -> "vnd.android.cursor.dir/$GATOS"
+            URI_GATO_ID -> "vnd.android.cursor.item/$GATOS"
+            else -> null
+        }
     }
 
     /**
