@@ -128,7 +128,7 @@ class GatosContentProvider: ContentProvider() {
         val endereco = uriMatcher().match(uri)
 
         val tabela = when (endereco) {
-            URI_RACAS,URI_RACA_ID -> TabelaCategorias(bd)
+            URI_RACAS,URI_RACA_ID -> TabelaRacas(bd)
             URI_GATOS,URI_GATO_ID -> TabelaGatos(bd)
             else -> null
         }
@@ -210,7 +210,7 @@ class GatosContentProvider: ContentProvider() {
         val endereco = uriMatcher().match(uri)
 
         val tabela = when (endereco) {
-            URI_RACAS -> TabelaCategorias(bd)
+            URI_RACAS -> TabelaRacas(bd)
             URI_GATOS -> TabelaGatos(bd)
             else -> return null
         }
@@ -256,7 +256,7 @@ class GatosContentProvider: ContentProvider() {
         val endereco = uriMatcher().match(uri)
 
         val tabela = when (endereco) {
-            URI_RACA_ID -> TabelaCategorias(bd)
+            URI_RACA_ID -> TabelaRacas(bd)
             URI_GATO_ID -> TabelaGatos(bd)
             else -> return 0
         }
@@ -297,7 +297,7 @@ class GatosContentProvider: ContentProvider() {
         val endereco = uriMatcher().match(uri)
 
         val tabela = when (endereco) {
-            URI_RACA_ID -> TabelaCategorias(bd)
+            URI_RACA_ID -> TabelaRacas(bd)
             URI_GATO_ID -> TabelaGatos(bd)
             else -> return 0
         }
