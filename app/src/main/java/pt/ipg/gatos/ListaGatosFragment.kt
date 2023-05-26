@@ -17,6 +17,7 @@ import pt.ipg.gatos.databinding.FragmentMenuPrincipalBinding
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+private const val ID_LOADER_GATOS = 0
 /**
  * A simple [Fragment] subclass.
  * Use the [ListaGatosFragment.newInstance] factory method to
@@ -56,6 +57,8 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewGatos.adapter = adapterGatos
         binding.recyclerViewGatos.layoutManager = LinearLayoutManager(requireContext())
 
+        val loader = LoaderManager.getInstance(this,)
+        loader.initLoader(ID_LOADER_GATOS, null)
     }
 
     companion object {
@@ -89,7 +92,7 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @return Return a new Loader instance that is ready to start loading.
      */
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-        
+
     }
 
     /**
