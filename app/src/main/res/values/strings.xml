@@ -15,4 +15,7 @@
     <string name="descricao_projeto">
         Descrição: Coleção de Dados (Database) de gatos no ambito da cadeira de Programação Avançada, através de Kotlin no Android Studio
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lista_gatos_label">Gatos</string>
 </resources>

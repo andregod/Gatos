@@ -32,8 +32,12 @@ class MenuPrincipalFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
+        binding.buttonSobre.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_SobreFragment)
+        }
+
+        binding.buttonGatos.setOnClickListener {
+            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_ListaGatosFragment)
         }
     }
 

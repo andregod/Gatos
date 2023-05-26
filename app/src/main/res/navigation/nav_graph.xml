@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
             app:destination="@id/SobreFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_ListaGatosFragment"
+            app:destination="@id/ListaGatosFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -23,6 +26,15 @@
 
         <action
             android:id="@+id/action_SobreFragment_to_MenuPrincipal_Fragment"
+            app:destination="@id/MenuPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ListaGatosFragment"
+        android:name="pt.ipg.gatos.ListaGatosFragment"
+        android:label="@string/lista_gatos_label"
+        tools:layout="@layout/fragment_lista_gatos">
+        <action
+            android:id="@+id/action_ListaGatosFragment_to_MenuPrincipalFragment2"
             app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
