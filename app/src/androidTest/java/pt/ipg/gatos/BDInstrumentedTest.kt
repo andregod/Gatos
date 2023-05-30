@@ -24,7 +24,7 @@ class BDInstrumentedTest {
         InstrumentationRegistry.getInstrumentation().targetContext
     @Before
     fun apagaBaseDados(){
-        getAppContext().deleteDatabase(BdGatosOpenHelper.NOME_BASE_DADOS)
+        //getAppContext().deleteDatabase(BdGatosOpenHelper.NOME_BASE_DADOS)
     }
 
     @Test

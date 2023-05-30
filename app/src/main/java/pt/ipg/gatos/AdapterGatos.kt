@@ -22,8 +22,8 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
         internal var gato : Gato? = null
             set(value) {
                 field = value
-                textViewNome.text = gato?.nome? : ""
-                textViewNome.text = gato?.idRaca.toString() ? ""
+                textViewNome.text = gato?.nome ? : ""
+                textViewRaca.text = gato?.idRaca.toString() ? : ""
             }
 
     }
