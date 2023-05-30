@@ -320,6 +320,11 @@ class GatosContentProvider: ContentProvider() {
         private const val URI_RACA_ID = 101
         private const val URI_GATOS = 200
         private const val URI_GATO_ID = 201
+
+        private val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
+
+        public val ENDERECO_RACAS = Uri.withAppendedPath(ENDERECO_BASE, RACAS)
+        public val ENDERECO_GATOS = Uri.withAppendedPath(ENDERECO_BASE, GATOS)
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE,RACAS, URI_RACAS)
             addURI(AUTORIDADE,"$RACAS/#", URI_RACA_ID)

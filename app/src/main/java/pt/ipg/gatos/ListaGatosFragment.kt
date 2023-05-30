@@ -1,5 +1,6 @@
 package pt.ipg.gatos
 
+import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,10 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
 import androidx.loader.app.LoaderManager.LoaderCallbacks
+import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.gatos.databinding.FragmentListaGatosBinding
-import pt.ipg.gatos.databinding.FragmentMenuPrincipalBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,10 +44,8 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
- _      _binding = ListaGatosFragmentBinding.inflate(inflater, container, false)
+ _      _binding = FragmentListaGatosBinding.inflate(inflater, container, false)
         return _binding.root
-
-
 
     }
 
@@ -58,7 +57,7 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         binding.recyclerViewGatos.layoutManager = LinearLayoutManager(requireContext())
 
         val loader = LoaderManager.getInstance(this,)
-        loader.initLoader(ID_LOADER_GATOS, null)
+        loader.initLoader(ID_LOADER_GATOS, null, this)
     }
 
     companion object {
@@ -92,7 +91,14 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      * @return Return a new Loader instance that is ready to start loading.
      */
     override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-
+    return CursorLoader(
+        requireContext(),
+        GatosContentProvider.ENDERECO_GATOS,
+        TabelaGatos.CAMPOS,
+        null,
+        null,
+        TabelaGatos.CAMPO_NOME
+    )
     }
 
     /**
