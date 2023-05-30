@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class AdapterGatos: RecyclerView.Adapter<AdapterGatos.ViewHolderGato>() {
+class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<AdapterGatos.ViewHolderGato>() {
 
     var cursor: Cursor? = null
 
@@ -15,8 +15,8 @@ class AdapterGatos: RecyclerView.Adapter<AdapterGatos.ViewHolderGato>() {
             notifyDataSetChanged()
         }
 
-    inner class ViewHolderGato(itemView: View): ViewHolder(itemView) {
-
+    inner class ViewHolderGato(contentor: View): ViewHolder(contentor) {
+    internal var gato : Gato? = null
     }
 
     /**
@@ -43,7 +43,10 @@ class AdapterGatos: RecyclerView.Adapter<AdapterGatos.ViewHolderGato>() {
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderGato {
-        TODO("Not yet implemented")
+        return ViewHolderGato(
+        fragment.layoutInflater.inflate(R.layout.item_gato,parent, false)
+        )
+
     }
 
     /**
@@ -77,6 +80,8 @@ class AdapterGatos: RecyclerView.Adapter<AdapterGatos.ViewHolderGato>() {
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderGato, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.move(position)
+        Gato.fromCursor(cursor!!)
+        holder
     }
 }
