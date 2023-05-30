@@ -19,11 +19,11 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
     inner class ViewHolderGato(contentor: View): ViewHolder(contentor) {
         private val textViewNome = contentor.findViewById<TextView>(R.id.textViewNome)
         private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewRaca)
-        internal var gato : Gato? = null
+        internal var gato: Gato? = null
             set(value) {
                 field = value
-                textViewNome.text = gato?.nome ? : ""
-                textViewRaca.text = gato?.idRaca.toString() ? : ""
+                textViewNome.text = gato?.nome?: ""
+                textViewRaca.text = gato?.idRaca.toString()?: ""
             }
 
     }
