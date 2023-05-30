@@ -3,6 +3,7 @@ package pt.ipg.gatos
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
@@ -16,7 +17,15 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
         }
 
     inner class ViewHolderGato(contentor: View): ViewHolder(contentor) {
-    internal var gato : Gato? = null
+        private val textViewNome = contentor.findViewById<TextView>(R.id.textViewNome)
+        private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewRaca)
+        internal var gato : Gato? = null
+            set(value) {
+                field = value
+                textViewNome.text = gato?.nome? : ""
+                textViewNome.text = gato?.idRaca.toString() ? ""
+            }
+
     }
 
     /**

@@ -8,7 +8,7 @@
     android:paddingBottom="8dp">
 
     <TextView
-        android:id="@+id/textViewGato"
+        android:id="@+id/textViewNome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stella"
@@ -22,5 +22,5 @@
         android:layout_height="wrap_content"
         android:text="Tuxedo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGato" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNome" />
 </androidx.constraintlayout.widget.ConstraintLayout>
