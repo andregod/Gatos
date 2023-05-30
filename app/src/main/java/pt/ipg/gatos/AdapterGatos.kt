@@ -89,7 +89,7 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderGato, position: Int) {
-        cursor!!.move(position)
+        cursor!!.moveToPosition(position)
         Gato.fromCursor(cursor!!)
         holder
     }
