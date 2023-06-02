@@ -15,8 +15,7 @@ data class Gato(
     var nomeDono: String,
     var morada: String,
     var porteGato: String,
-    var idRaca: Long,
-
+    var raca: Raca,
     var id: Long = -1
 ) {
 
@@ -32,7 +31,7 @@ data class Gato(
         valores.put(TabelaGatos.CAMPO_NOMEDONO, nomeDono)
         valores.put(TabelaGatos.CAMPO_MORADA, morada)
         valores.put(TabelaGatos.CAMPO_PORTE, porteGato)
-        valores.put(TabelaGatos.CAMPO_FK_RACA, idRaca)
+        valores.put(TabelaGatos.CAMPO_FK_RACA, raca.id)
 
         return valores
     }
@@ -50,6 +49,7 @@ data class Gato(
             val posMorada = cursor.getColumnIndex(TabelaGatos.CAMPO_MORADA)
             val posPorteGato = cursor.getColumnIndex(TabelaGatos.CAMPO_PORTE)
             val posRacaFK = cursor.getColumnIndex(TabelaGatos.CAMPO_FK_RACA)
+            val posNomeRaca = cursor.getColumnIndex(TabelaGatos.CAMPO_NOME_RACA)
 
             val id = cursor.getLong(posID)
             val nome = cursor.getString(posNome)
@@ -70,9 +70,9 @@ data class Gato(
             val porteGato = cursor.getString(posPorteGato)
 
             val idRaca = cursor.getLong(posRacaFK)
+            val nomeRaca = cursor.getString(posNomeRaca)
 
-
-            return Gato(nome, cor, genero, dataNascimento, idade, peso, nomeDono, morada, porteGato, idRaca, id)
+            return Gato(nome, cor, genero, dataNascimento, idade, peso, nomeDono, morada, porteGato, Raca(idRaca,nomeRaca), id)
         }
     }
 

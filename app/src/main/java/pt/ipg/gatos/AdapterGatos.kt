@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
@@ -19,14 +20,34 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
     inner class ViewHolderGato(contentor: View): ViewHolder(contentor) {
         private val textViewNome = contentor.findViewById<TextView>(R.id.textViewNome)
         private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewRaca)
+
+        init {
+            contentor.setOnClickListener {
+                ViewHolderSelecionado.
+                seleciona()
+                //Toast.makeText(fragment.requireContext(),"teste", Toast.LENGTH_SHORT).show() }
+
+            }
+        }
+
         internal var gato: Gato? = null
             set(value) {
                 field = value
                 textViewNome.text = gato?.nome?: ""
-                textViewRaca.text = gato?.idRaca.toString()?: ""
+                textViewRaca.text = gato?.raca?.toString()?: ""
             }
+    fun seleciona() {
+        ViewHolderSelecionado = this
+        itemView.setBackgroundResource(R.color.item_selecionado)
+    }
+
+    fun desSeleciona() {
+        itemView.setBackgroundResource(android.R.color.white)
+    }
 
     }
+
+    private var ViewHolderSelecionado: ViewHolderGato? = null
 
     /**
      * Called when RecyclerView needs a new [ViewHolder] of the given type to represent

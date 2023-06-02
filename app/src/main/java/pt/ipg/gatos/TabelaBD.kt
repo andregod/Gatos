@@ -13,7 +13,7 @@ abstract class TabelaBD (val db: SQLiteDatabase, val nome: String){
         return db.insert(nome,  null, valores)
     }
 
-    fun consultar(
+    open fun consultar(
         colunas: Array<String>,
         selecao: String?,
         argsSelecao: Array<String>?,

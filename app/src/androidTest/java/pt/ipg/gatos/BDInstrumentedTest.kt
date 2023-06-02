@@ -24,7 +24,7 @@ class BDInstrumentedTest {
         InstrumentationRegistry.getInstrumentation().targetContext
     @Before
     fun apagaBaseDados(){
-        //getAppContext().deleteDatabase(BdGatosOpenHelper.NOME_BASE_DADOS)
+        getAppContext().deleteDatabase(BdGatosOpenHelper.NOME_BASE_DADOS)
     }
 
     @Test
@@ -66,12 +66,12 @@ class BDInstrumentedTest {
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
 
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
         insereGato(bd,gato)
 
         val dataNasc2= Calendar.getInstance()
         dataNasc2.set(2020, 3, 1)
-        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca.id)
+        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca)
         insereGato(bd, gato2)
     }
 
@@ -85,12 +85,12 @@ class BDInstrumentedTest {
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
 
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
         insereGato(bd,gato)
 
         val dataNasc2= Calendar.getInstance()
         dataNasc2.set(2020, 3, 1)
-        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca.id)
+        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca)
         insereGato(bd, gato2)
 
         val tabelaGatos = TabelaGatos(bd)
@@ -190,7 +190,7 @@ class BDInstrumentedTest {
 
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
         insereGato(bd,gato)
 
 
@@ -249,7 +249,7 @@ class BDInstrumentedTest {
         val novaDataNasc = Calendar.getInstance()
         novaDataNasc.set(2023,2,2)
 
-        val gato = Gato("TesteBurmes", "Branco/Preto", "Femea", novaDataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca.id)
+        val gato = Gato("TesteBurmes", "Branco/Preto", "Femea", novaDataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
         insereGato(bd,gato)
 
         val registosAlterados = TabelaGatos(bd).eliminar(
