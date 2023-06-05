@@ -50,6 +50,8 @@ data class Gato(
             val posPorteGato = cursor.getColumnIndex(TabelaGatos.CAMPO_PORTE)
             val posRacaFK = cursor.getColumnIndex(TabelaGatos.CAMPO_FK_RACA)
             val posNomeRaca = cursor.getColumnIndex(TabelaGatos.CAMPO_NOME_RACA)
+            val posCorRaca= cursor.getColumnIndex(TabelaGatos.CAMPO_COR_RACA)
+            val posPorteRaca= cursor.getColumnIndex(TabelaGatos.CAMPO_PORTE_RACA)
 
             val id = cursor.getLong(posID)
             val nome = cursor.getString(posNome)
@@ -71,8 +73,10 @@ data class Gato(
 
             val idRaca = cursor.getLong(posRacaFK)
             val nomeRaca = cursor.getString(posNomeRaca)
+            val porteRaca = cursor.getString(posPorteRaca)
+            val corRaca = cursor.getString(posCorRaca)
 
-            return Gato(nome, cor, genero, dataNascimento, idade, peso, nomeDono, morada, porteGato, Raca(idRaca,nomeRaca), id)
+            return Gato(nome, cor, genero, dataNascimento, idade, peso, nomeDono, morada, porteGato, Raca(nomeRaca, corRaca, porteRaca, idRaca), id)
         }
     }
 

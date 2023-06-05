@@ -40,13 +40,16 @@ class TabelaGatos(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val CAMPO_PORTE = "porte"
         const val CAMPO_FK_RACA = "id_raca"
         const val CAMPO_NOME_RACA = TabelaRacas.CAMPO_NOMERACA
+        const val CAMPO_COR_RACA = TabelaRacas.CAMPO_CORPRINCIPALRACA
+        const val CAMPO_PORTE_RACA = TabelaRacas.CAMPO_PORTERACA
+
 
         //const val CAMPO_TITULO = "titulo"
         //const val CAMPO_ISBN = "isbn"
         //const val CAMPO_DATA_PUB = "data_publicacao"
         // const val CAMPO_FK_CATEGORIA = "id_categoria"
 
-        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_COR, CAMPO_GENERO, CAMPO_DATA_NASC,CAMPO_IDADE,CAMPO_PESO, CAMPO_NOMEDONO,CAMPO_MORADA,CAMPO_PORTE ,CAMPO_FK_RACA, CAMPO_NOME_RACA)
+        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_COR, CAMPO_GENERO, CAMPO_DATA_NASC,CAMPO_IDADE,CAMPO_PESO, CAMPO_NOMEDONO,CAMPO_MORADA,CAMPO_PORTE ,CAMPO_FK_RACA, CAMPO_NOME_RACA, CAMPO_COR_RACA, CAMPO_PORTE_RACA)
         //val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_TITULO, CAMPO_ISBN, CAMPO_DATA_PUB, CAMPO_FK_CATEGORIA)
     }
 }

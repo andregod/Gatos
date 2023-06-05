@@ -23,7 +23,7 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
 
         init {
             contentor.setOnClickListener {
-                ViewHolderSelecionado.
+                ViewHolderSelecionado?.desSeleciona()
                 seleciona()
                 //Toast.makeText(fragment.requireContext(),"teste", Toast.LENGTH_SHORT).show() }
 
