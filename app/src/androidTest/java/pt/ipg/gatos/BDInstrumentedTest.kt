@@ -97,7 +97,11 @@ class BDInstrumentedTest {
 
         val cursor = tabelaGatos.consultar(
             TabelaGatos.CAMPOS,
-            null,null,null,null,null
+            "${TabelaGatos.CAMPO_ID}=?",
+            arrayOf(gato.id.toString()),
+            null,
+            null,
+            null
         )
 
         assert(cursor.moveToNext())
