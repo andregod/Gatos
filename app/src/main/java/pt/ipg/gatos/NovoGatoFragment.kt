@@ -1,19 +1,17 @@
-package pt.ipg.gatos
+package pt.ipg.livros
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
-import pt.ipg.gatos.databinding.FragmentMenuPrincipalBinding
+import androidx.fragment.app.Fragment
+import pt.ipg.gatos.MainActivity
+import pt.ipg.gatos.R
+import pt.ipg.gatos.databinding.FragmentNovoGatoBinding
+import pt.ipg.livros.databinding.FragmentNovoLivroBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class MenuPrincipalFragment : Fragment() {
-
-    private var _binding: FragmentMenuPrincipalBinding? = null
+class NovoLivroFragment : Fragment() {
+    private var _binding: FragmentNovoGatoBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,21 +22,13 @@ class MenuPrincipalFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentMenuPrincipalBinding.inflate(inflater, container, false)
+        _binding = FragmentNovoGatoBinding.inflate(inflater, container, false)
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.buttonSobre.setOnClickListener {
-            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_SobreFragment)
-        }
-
-        binding.buttonGatos.setOnClickListener {
-            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_ListaGatosFragment)
-        }
 
         val activity = activity as MainActivity
         activity.fragment = this

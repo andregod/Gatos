@@ -111,7 +111,7 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
      */
     override fun onBindViewHolder(holder: ViewHolderGato, position: Int) {
         cursor!!.moveToPosition(position)
-        Gato.fromCursor(cursor!!)
-        holder
+        holder.gato = Gato.fromCursor(cursor!!)
+
     }
 }
