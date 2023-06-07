@@ -4,6 +4,7 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
@@ -157,5 +158,34 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
         adapterGatos!!.cursor = null
+    }
+    fun processaOpcaoMenu(item: MenuItem) : Boolean {
+        return when (item.itemId) {
+            R.id.action_adicionar -> {
+                adicionaGato()
+                true
+            }
+            R.id.action_editar -> {
+                editarGato()
+                true
+            }
+            R.id.action_eliminar -> {
+                eliminarGato()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun eliminarGato() {
+
+    }
+
+    private fun editarGato() {
+
+    }
+
+    private fun adicionaGato() {
+
     }
 }
