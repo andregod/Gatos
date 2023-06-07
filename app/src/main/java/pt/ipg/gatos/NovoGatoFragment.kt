@@ -1,12 +1,10 @@
-package pt.ipg.livros
+package pt.ipg.gatos
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import pt.ipg.gatos.MainActivity
-import pt.ipg.gatos.R
 import pt.ipg.gatos.databinding.FragmentNovoGatoBinding
 
 class NovoGatoFragment : Fragment() {
