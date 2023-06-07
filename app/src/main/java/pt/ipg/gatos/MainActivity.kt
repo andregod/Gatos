@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import pt.ipg.gatos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var menu:Menu
+    private lateinit var menu: Menu
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
