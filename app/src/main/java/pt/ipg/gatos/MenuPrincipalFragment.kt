@@ -41,6 +41,7 @@ class MenuPrincipalFragment : Fragment() {
         }
 
         val activity = activity as MainActivity
+        activity.fragment = this
         activity.idMenuAtual = R.menu.menu_main
     }
 

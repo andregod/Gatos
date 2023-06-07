@@ -66,6 +66,7 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         loader.initLoader(ID_LOADER_GATOS, null, this)
 
         val activity = activity as MainActivity
+        activity.fragment = this
         activity.idMenuAtual = R.menu.menu_lista_gatos
     }
 
