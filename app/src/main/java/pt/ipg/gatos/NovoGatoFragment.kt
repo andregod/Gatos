@@ -93,6 +93,7 @@ class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             return
         }
 
+
         val calendario = Calendar.getInstance()
         calendario.time = data
 
