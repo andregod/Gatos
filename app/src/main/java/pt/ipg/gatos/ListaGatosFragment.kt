@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.gatos.databinding.FragmentListaGatosBinding
 
@@ -196,6 +197,6 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun adicionaGato() {
-
+            findNavController().navigate(R.id.action_ListaGatosFragment_to_novoGatoFragment)
+        }
     }
-}

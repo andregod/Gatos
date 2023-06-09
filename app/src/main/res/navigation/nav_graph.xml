@@ -39,15 +39,15 @@
     </fragment>
 
     <action
-        android:id="@+id/action_ListaLivrosFragment_to_novoLivroFragment"
-        app:destination="@id/novoLivroFragment" />
+        android:id="@+id/action_ListaGatosFragment_to_novoGatoFragment"
+        app:destination="@id/novoGatoFragment" />
 <fragment
-android:id="@+id/novoLivroFragment"
+android:id="@+id/novoGatoFragment"
 android:name="pt.ipg.gatos.NovoGatoFragment"
 android:label="@string/novo_gato_label"
 tools:layout="@layout/fragment_novo_gato">
 <action
-    android:id="@+id/action_novoLivroFragment_to_ListaLivrosFragment"
+    android:id="@+id/action_novoGatoFragment_to_ListaGatosFragment"
     app:destination="@id/ListaGatosFragment" />
 </fragment>
 </navigation>
