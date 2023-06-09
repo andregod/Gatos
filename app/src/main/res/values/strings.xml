@@ -25,4 +25,6 @@
     <string name="nome">Nome</string>
     <string name="raca">Raca</string>
     <string name="data_nascimento">Data nascimento</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
