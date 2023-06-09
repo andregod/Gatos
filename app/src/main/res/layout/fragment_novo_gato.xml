@@ -40,7 +40,9 @@
                 android:id="@+id/editTextDataPub"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/data_nascimento" />
+                android:hint="@string/data_nascimento"
+                android:inputType="datetime|date" />
+
         </com.google.android.material.textfield.TextInputLayout>
 
     </com.google.android.material.textfield.TextInputLayout>

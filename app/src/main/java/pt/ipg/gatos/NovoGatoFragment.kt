@@ -7,12 +7,16 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SimpleCursorAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import pt.ipg.gatos.databinding.FragmentNovoGatoBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 private const val ID_LOADER_RACAS = 0
 class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
@@ -57,7 +61,7 @@ class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             }
 
             R.id.action_cancelar -> {
-                cancelar()
+                voltaListaLivros()
                 true
             }
 
@@ -65,12 +69,58 @@ class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         }
     }
 
-    private fun cancelar() {
+    private fun voltaListaLivros() {
         findNavController().navigate(R.id.action_novoGatoFragment_to_ListaGatosFragment)
     }
 
     private fun guardar() {
+        val nome = binding.editTextTitulo.text.toString()
+        if (nome.isBlank()) {
+            binding.editTextTitulo.error = getString(R.string.nome_obrigatorio)
+            binding.editTextTitulo.requestFocus()
+            return
+        }
 
+        val racaId = binding.spinnerCategorias.selectedItemId
+
+        val data: Date
+        val df = SimpleDateFormat("dd-MM-yyyy")
+        try {
+            data = df.parse(binding.editTextDataPub.text.toString())
+        } catch (e: Exception) {
+            binding.editTextDataPub.error = getString(R.string.data_invalida)
+            binding.editTextDataPub.requestFocus()
+            return
+        }
+
+        val calendario = Calendar.getInstance()
+        calendario.time = data
+
+        val gato = Gato(
+            nome,
+            "?",
+            "?",
+            calendario,
+            1,
+            1.0,
+            "?",
+            "?",
+            "?",
+                    Raca("?", "?", "?",racaId),
+        )
+
+        val id = requireActivity().contentResolver.insert(
+            GatosContentProvider.ENDERECO_GATOS,
+            gato.toContentValues()
+        )
+
+        if (id == null) {
+            binding.editTextTitulo.error = getString(R.string.erro_guardar_gato)
+            return
+        }
+
+        Toast.makeText(requireContext(), getString(R.string.gato_guardado_com_sucesso), Toast.LENGTH_SHORT).show()
+        voltaListaLivros()
     }
 
     /**
