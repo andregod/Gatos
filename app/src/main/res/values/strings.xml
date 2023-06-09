@@ -22,4 +22,7 @@
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
     <string name="novo_gato_label">Novo gato</string>
+    <string name="nome">Nome</string>
+    <string name="raca">Raca</string>
+    <string name="data_nascimento">Data nascimento</string>
 </resources>
