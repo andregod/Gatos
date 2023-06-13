@@ -192,6 +192,9 @@ class BDInstrumentedTest {
         val raca = Raca("Maine", "Pequeno", "Branco")
         insereRaca(bd,raca)
 
+        val raca2 = Raca("MaineGrande", "Pequeno", "Branco")
+        insereRaca(bd,raca2)
+
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
         val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
@@ -212,6 +215,7 @@ class BDInstrumentedTest {
         gato.nomeDono = "Noel"
         gato.morada = "Guarda"
         gato.porteGato = "Grande"
+        gato.raca = raca2
         //Adicionar restantes campos
 
 

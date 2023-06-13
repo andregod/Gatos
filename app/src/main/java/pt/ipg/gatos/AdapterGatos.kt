@@ -34,10 +34,11 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
             set(value) {
                 field = value
                 textViewNome.text = gato?.nome?: ""
-                textViewRaca.text = gato?.raca?.toString()?: ""
+                textViewRaca.text = gato?.raca?.nomeRaca?: ""
             }
     fun seleciona() {
         ViewHolderSelecionado = this
+        fragment.gatoSelecionado = gato
         itemView.setBackgroundResource(R.color.item_selecionado)
     }
 
@@ -111,7 +112,7 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
      */
     override fun onBindViewHolder(holder: ViewHolderGato, position: Int) {
         cursor!!.moveToPosition(position)
-        Gato.fromCursor(cursor!!)
-        holder
+        holder.gato = Gato.fromCursor(cursor!!)
+
     }
 }

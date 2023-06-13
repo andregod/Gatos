@@ -9,9 +9,8 @@ abstract class TabelaBD (val db: SQLiteDatabase, val nome: String){
 
     abstract fun criar()
 
-    fun insere(valores: ContentValues): Long {
-        return db.insert(nome,  null, valores)
-    }
+    fun insere(valores: ContentValues) = db.insert(nome,  null, valores)
+
 
     open fun consultar(
         colunas: Array<String>,

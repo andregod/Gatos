@@ -37,4 +37,17 @@
             android:id="@+id/action_ListaGatosFragment_to_MenuPrincipalFragment2"
             app:destination="@id/MenuPrincipalFragment" />
     </fragment>
+
+    <action
+        android:id="@+id/action_ListaGatosFragment_to_novoGatoFragment"
+        app:destination="@id/novoGatoFragment" />
+<fragment
+android:id="@+id/novoGatoFragment"
+android:name="pt.ipg.gatos.NovoGatoFragment"
+android:label="@string/novo_gato_label"
+tools:layout="@layout/fragment_novo_gato">
+<action
+    android:id="@+id/action_novoGatoFragment_to_ListaGatosFragment"
+    app:destination="@id/ListaGatosFragment" />
+</fragment>
 </navigation>

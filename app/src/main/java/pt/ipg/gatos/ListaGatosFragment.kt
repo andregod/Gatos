@@ -4,11 +4,13 @@ import android.database.Cursor
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import pt.ipg.gatos.databinding.FragmentListaGatosBinding
 
@@ -29,6 +31,18 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    var gatoSelecionado: Gato? = null
+
+        set(value) {
+            field = value
+
+            val mostrarEliminarAlterar = (value != null)
+
+            val activity = activity as MainActivity
+            activity.mostraOpcaoMenu(R.id.action_editar, mostrarEliminarAlterar)
+            activity.mostraOpcaoMenu(R.id.action_eliminar, mostrarEliminarAlterar)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +76,10 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
         val loader = LoaderManager.getInstance(this,)
         loader.initLoader(ID_LOADER_GATOS, null, this)
+
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_lista_gatos
     }
 
 
@@ -152,4 +170,33 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onLoaderReset(loader: Loader<Cursor>) {
         adapterGatos!!.cursor = null
     }
-}
+    fun processaOpcaoMenu(item: MenuItem) : Boolean {
+        return when (item.itemId) {
+            R.id.action_adicionar -> {
+                adicionaGato()
+                true
+            }
+            R.id.action_editar -> {
+                editarGato()
+                true
+            }
+            R.id.action_eliminar -> {
+                eliminarGato()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun eliminarGato() {
+
+    }
+
+    private fun editarGato() {
+
+    }
+
+    private fun adicionaGato() {
+            findNavController().navigate(R.id.action_ListaGatosFragment_to_novoGatoFragment)
+        }
+    }

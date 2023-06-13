@@ -18,4 +18,17 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lista_gatos_label">Gatos</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="novo_gato_label">Novo gato</string>
+    <string name="nome">Nome</string>
+    <string name="raca">Raca</string>
+    <string name="data_nascimento">Data nascimento</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="nome_obrigatorio">Deve preencher o nome</string>
+    <string name="data_invalida">Data inválida</string>
+    <string name="gato_guardado_com_sucesso">Gato guardado com sucesso</string>
+    <string name="erro_guardar_gato">Não foi possível guardar o gato</string>
 </resources>
