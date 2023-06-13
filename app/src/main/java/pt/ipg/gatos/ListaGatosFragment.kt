@@ -189,7 +189,8 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun eliminarGato() {
-
+    val acao = ListaGatosFragmentDirections.actionListaGatosFragmentToEliminarGatos(gatoSelecionado!!)
+    findNavController().navigate(acao)
     }
 
     private fun editarGato() {

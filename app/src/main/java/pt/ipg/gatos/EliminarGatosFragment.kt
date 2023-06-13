@@ -19,6 +19,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class EliminarGatosFragment : Fragment() {
+    private lateinit var gato: Gato
     private var _binding: FragmentNovoGatoBinding? = null
 
     // This property is only valid between onCreateView and
@@ -39,24 +40,25 @@ class EliminarGatosFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val activity = activity as MainActivity
+        activity.fragment = this
+        activity.idMenuAtual = R.menu.menu_eliminar
+
+        gato = EliminarGatosFragmentArgs.fromBundle(requireArguments()).gato
+
+        //binding.textViewNome.text = gato.nome
+        //binding.textViewNome.text = gato.nome
+        //binding.textViewNome.text = gato.nome
+        //binding.textViewNome.text = gato.nome
+        //binding.textViewNome.text = gato.nome
+        //binding.textViewNome.text = gato.nome
+    }
+
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EliminarGatos.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EliminarGatosFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
     }
 
     private fun voltaListaGatos() {
