@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_ListaGatosFragment_to_MenuPrincipalFragment2"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_ListaGatosFragment_to_eliminarGatos"
+            app:destination="@id/eliminarGatos" />
     </fragment>
 
     <action
@@ -50,4 +53,13 @@ tools:layout="@layout/fragment_novo_gato">
     android:id="@+id/action_novoGatoFragment_to_ListaGatosFragment"
     app:destination="@id/ListaGatosFragment" />
 </fragment>
+    <fragment
+        android:id="@+id/eliminarGatos"
+        android:name="pt.ipg.gatos.EliminarGatosFragment"
+        android:label="fragment_eliminar_gatos"
+        tools:layout="@layout/fragment_eliminar_gatos" >
+        <action
+            android:id="@+id/action_eliminarGatos_to_ListaGatosFragment"
+            app:destination="@id/ListaGatosFragment" />
+    </fragment>
 </navigation>
