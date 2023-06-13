@@ -60,7 +60,7 @@ class EliminarGatosFragment : Fragment() {
     }
 
     private fun voltaListaGatos() {
-        findNavController().navigate(R.id.action_eliminarLivroFragment_to_ListaGatosFragment)
+        findNavController().navigate(R.id.action_eliminarGatos_to_ListaGatosFragment)
     }
 
     private fun eliminar() {}
