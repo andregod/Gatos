@@ -61,5 +61,8 @@ tools:layout="@layout/fragment_novo_gato">
         <action
             android:id="@+id/action_eliminarGatos_to_ListaGatosFragment"
             app:destination="@id/ListaGatosFragment" />
+        <argument
+            android:name="gato"
+            app:argType="pt.ipg.gatos.Gato" />
     </fragment>
 </navigation>

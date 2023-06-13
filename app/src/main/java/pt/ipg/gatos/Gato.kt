@@ -3,6 +3,7 @@ package pt.ipg.gatos
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 import java.util.*
 
 data class Gato(
@@ -17,7 +18,7 @@ data class Gato(
     var porteGato: String,
     var raca: Raca,
     var id: Long = -1
-) {
+) : Serializable {
 
     fun toContentValues(): ContentValues {
         val valores = ContentValues()

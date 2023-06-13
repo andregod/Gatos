@@ -3,13 +3,14 @@ package pt.ipg.gatos
 import android.content.ContentValues
 import android.database.Cursor
 import android.provider.BaseColumns
+import java.io.Serializable
 
 data class Raca(
     var nomeRaca: String,
     var corPrincipalRaca: String,
     var PorteRaca: String,
     var id: Long = -1
-) {
+) : Serializable {
 
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
