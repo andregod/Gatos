@@ -1,6 +1,7 @@
 package pt.ipg.gatos
 
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.view.LayoutInflater
@@ -77,7 +78,7 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             }
 
             R.id.action_cancelar -> {
-                voltaListaLivros()
+                voltaListaGatos()
                 true
             }
 
@@ -85,7 +86,7 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         }
     }
 
-    private fun voltaListaLivros() {
+    private fun voltaListaGatos() {
         findNavController().navigate(R.id.action_editarGatoFragment_to_ListaGatosFragment)
     }
 
@@ -113,18 +114,45 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         val calendario = Calendar.getInstance()
         calendario.time = data
 
-        val gato = Gato(
-            nome,
-            "?",
-            "?",
-            calendario,
-            1,
-            1.0,
-            "?",
-            "?",
-            "?",
-                    Raca("?", "?", "?",racaId),
-        )
+        if (gato == null) {
+            val gato = Gato(
+                nome,
+                "?",
+                "?",
+                calendario,
+                1,
+                1.0,
+                "?",
+                "?",
+                "?",
+                Raca("?", "?", "?", racaId),
+            )
+        } else {
+            val gato = gato!!
+            gato.nome = nome
+            gato.raca = Raca("?", racaId)
+            gato.peso = peso
+            gato.dataNascimento = calendario
+
+            alteraGato(gato)
+        }
+    }
+
+        private fun alteraGato(gato: Gato) {
+            val enderecoGato = Uri.withAppendedPath(GatosContentProvider.ENDERECO_GATOS, gato.id.toString())
+            val gatosAlterados = requireActivity().contentResolver.update(enderecoGato, gato.toContentValues(), null, null)
+
+            if (gatosAlterados == 1) {
+                Toast.makeText(requireContext(), R.string.gato_guardado_com_sucesso, Toast.LENGTH_LONG).show()
+                voltaListaGatos()
+            } else {
+                binding.editTextTitulo.error = getString(R.string.erro_guardar_gato)
+            }
+        }
+
+        private fun insereGato(
+            gato: Gato
+        ) {
 
         val id = requireActivity().contentResolver.insert(
             GatosContentProvider.ENDERECO_GATOS,
@@ -135,9 +163,13 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             binding.editTextTitulo.error = getString(R.string.erro_guardar_gato)
             return
         }
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.gato_guardado_com_sucesso),
+                Toast.LENGTH_SHORT
+            ).show()
 
-        Toast.makeText(requireContext(), getString(R.string.gato_guardado_com_sucesso), Toast.LENGTH_SHORT).show()
-        voltaListaLivros()
+            voltaListaGatos()
     }
 
     /**
