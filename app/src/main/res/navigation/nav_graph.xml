@@ -37,21 +37,25 @@
             android:id="@+id/action_ListaGatosFragment_to_MenuPrincipalFragment2"
             app:destination="@id/MenuPrincipalFragment" />
         <action
-            android:id="@+id/action_ListaGatosFragment_to_eliminarGatos"
-            app:destination="@id/eliminarGatos" />
+            android:id="@+id/action_ListaGatosFragment_to_editarGatoFragment"
+            app:destination="@id/editarGatoFragment" />
     </fragment>
 
     <action
         android:id="@+id/action_ListaGatosFragment_to_novoGatoFragment"
-        app:destination="@id/novoGatoFragment" />
+        app:destination="@id/editarGatoFragment" />
 <fragment
-android:id="@+id/novoGatoFragment"
+android:id="@+id/editarGatoFragment"
 android:name="pt.ipg.gatos.EditarGatoFragment"
 android:label="@string/novo_gato_label"
 tools:layout="@layout/fragment_editar_gato">
 <action
-    android:id="@+id/action_novoGatoFragment_to_ListaGatosFragment"
+    android:id="@+id/action_editarGatoFragment_to_ListaGatosFragment"
     app:destination="@id/ListaGatosFragment" />
+    <argument
+        android:name="gato"
+        app:argType="pt.ipg.gatos.Gato"
+        app:nullable="true" />
 </fragment>
     <fragment
         android:id="@+id/eliminarGatos"

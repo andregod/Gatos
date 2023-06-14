@@ -194,10 +194,12 @@ class ListaGatosFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun editarGato() {
-
+        val acao = ListaGatosFragmentDirections.actionListaGatosFragmentToEditarGatoFragment(gatoSelecionado!!)
+        findNavController().navigate(acao)
     }
 
     private fun adicionaGato() {
-            findNavController().navigate(R.id.action_ListaGatosFragment_to_novoGatoFragment)
+        val acao = ListaGatosFragmentDirections.actionListaGatosFragmentToEditarGatoFragment(null)
+        findNavController().navigate(acao)
         }
     }

@@ -2,6 +2,7 @@ package pt.ipg.gatos
 
 import android.database.Cursor
 import android.os.Bundle
+import android.text.format.DateFormat
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -20,6 +21,7 @@ import java.util.Date
 
 private const val ID_LOADER_RACAS = 0
 class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
+    private var gato: Gato?= null
     private var _binding: FragmentEditarGatoBinding? = null
 
     // This property is only valid between onCreateView and
@@ -46,6 +48,20 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_main
+
+        val gato = EditarGatoFragmentArgs.fromBundle(requireArguments()).gato
+
+        if (gato != null) {
+            binding.editTextTitulo.setText(gato.nome)
+            binding.editTextIsbn.setText(gato.peso)
+            if (gato.dataNascimento != null) {
+                binding.editTextDataPub.setText(
+                    DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
+                )
+            }
+        }
+
+        this.gato = gato
     }
 
     override fun onDestroyView() {
@@ -70,7 +86,7 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun voltaListaLivros() {
-        findNavController().navigate(R.id.action_novoGatoFragment_to_ListaGatosFragment)
+        findNavController().navigate(R.id.action_editarGatoFragment_to_ListaGatosFragment)
     }
 
     private fun guardar() {
@@ -215,5 +231,21 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             intArrayOf(android.R.id.text1),
             0
         )
+
+        mostraRacaSelecionadaSpinner()
+    }
+
+    private fun mostraRacaSelecionadaSpinner() {
+        if (gato == null) return
+
+        val idRaca = gato!!.raca.id
+
+        val ultimaRaca = binding.spinnerRacas.count - 1
+        for (i in 0..ultimaRaca) {
+            if (idRaca == binding.spinnerRacas.getItemIdAtPosition(i)) {
+                binding.spinnerRacas.setSelection(i)
+                return
+            }
+        }
     }
 }
