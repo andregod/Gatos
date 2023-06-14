@@ -48,13 +48,13 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
 
         val activity = activity as MainActivity
         activity.fragment = this
-        activity.idMenuAtual = R.menu.menu_main
+        activity.idMenuAtual = R.menu.menu_guardar_cancelar
 
         val gato = EditarGatoFragmentArgs.fromBundle(requireArguments()).gato
 
         if (gato != null) {
             binding.editTextTitulo.setText(gato.nome)
-            binding.editTextIsbn.setText(gato.peso)
+            binding.editTextIsbn.setText(gato.peso.toString())
             if (gato.dataNascimento != null) {
                 binding.editTextDataPub.setText(
                     DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
@@ -127,11 +127,12 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
                 "?",
                 Raca("?", "?", "?", racaId),
             )
+            insereGato(gato)
         } else {
             val gato = gato!!
             gato.nome = nome
-            gato.raca = Raca("?", racaId)
-            gato.peso = peso
+            gato.raca = Raca("?", "?", "?",racaId)
+            gato.peso = 1.0
             gato.dataNascimento = calendario
 
             alteraGato(gato)

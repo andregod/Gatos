@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_ListaGatosFragment_to_editarGatoFragment"
             app:destination="@id/editarGatoFragment" />
+        <action
+            android:id="@+id/action_ListaGatosFragment_to_eliminarGatosFragment"
+            app:destination="@id/eliminarGatos" />
     </fragment>
 
     <action
