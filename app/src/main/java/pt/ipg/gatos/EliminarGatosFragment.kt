@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import pt.ipg.gatos.databinding.FragmentNovoGatoBinding
+import pt.ipg.gatos.databinding.FragmentEliminarGatosBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,7 +21,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class EliminarGatosFragment : Fragment() {
     private lateinit var gato: Gato
-    private var _binding: FragmentNovoGatoBinding? = null
+    private var _binding: FragmentEliminarGatosBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -37,7 +37,7 @@ class EliminarGatosFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentNovoGatoBinding.inflate(inflater, container, false)
+        _binding = FragmentEliminarGatosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -51,10 +51,10 @@ class EliminarGatosFragment : Fragment() {
         gato = EliminarGatosFragmentArgs.fromBundle(requireArguments()).gato
 
         binding.textViewNome.text = gato.nome
-        binding.textViewPeso.text = gato.isbn
-        binding.textViewCategoria.text = gato.categoria.descricao
+        binding.textViewPeso.text = gato.peso.toString()
+        binding.textViewRaca.text = gato.raca.nomeRaca
         if (gato.dataNascimento != null) {
-            binding.textViewDataNasc.text = DateFormat.format("yyyy-MM-dd", livro.dataPublicacao)
+            binding.textViewDataNascimento.text = DateFormat.format("yyyy-MM-dd", livro.dataPublicacao)
         }
 
         //binding.textViewNome.text = gato.nome

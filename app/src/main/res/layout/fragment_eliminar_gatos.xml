@@ -15,7 +15,7 @@
         android:textColor="@color/design_default_color_primary" />
 
     <TextView
-        android:id="@+id/textViewTitulo"
+        android:id="@+id/textViewNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -23,7 +23,7 @@
         tools:text="Meu Pé de Laranja Lima" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewIdade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -39,7 +39,7 @@
         tools:text="Peso" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewRaca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -47,26 +47,21 @@
         android:textColor="@color/design_default_color_primary" />
 
     <TextView
-        android:id="@+id/textViewCategoria"
+        android:id="@+id/textViewDono"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:text="Tuxedo" />
+        tools:text="Dono" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textViewDataNascimento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/data_nasc"
-        android:textColor="@color/design_default_color_primary" />
-
-    <TextView
-        android:id="@+id/textViewDataNasc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/design_default_color_primary"
         tools:text="01/01/1968" />
+
+
 </LinearLayout>
