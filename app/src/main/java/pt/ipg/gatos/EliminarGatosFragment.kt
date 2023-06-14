@@ -1,6 +1,7 @@
 package pt.ipg.gatos
 
 import android.os.Bundle
+import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -48,6 +49,13 @@ class EliminarGatosFragment : Fragment() {
         activity.idMenuAtual = R.menu.menu_eliminar
 
         gato = EliminarGatosFragmentArgs.fromBundle(requireArguments()).gato
+
+        binding.textViewNome.text = gato.nome
+        binding.textViewPeso.text = gato.isbn
+        binding.textViewCategoria.text = gato.categoria.descricao
+        if (gato.dataNascimento != null) {
+            binding.textViewDataNasc.text = DateFormat.format("yyyy-MM-dd", livro.dataPublicacao)
+        }
 
         //binding.textViewNome.text = gato.nome
         //binding.textViewNome.text = gato.nome
