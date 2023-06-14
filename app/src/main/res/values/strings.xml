@@ -34,4 +34,6 @@
     <string name="EliminarGato"> Eliminar Gatos </string>
     <string name="idade">idade</string>
     <string name="data_nasc">data de nascimento</string>
+    <string name="gato_eliminado_com_sucesso">Gato eliminado com sucesso!</string>
+    <string name="erro_eliminar_gato">Erro ao eliminar o gato!</string>
 </resources>

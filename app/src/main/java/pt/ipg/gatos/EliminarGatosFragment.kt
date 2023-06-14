@@ -1,12 +1,16 @@
 package pt.ipg.gatos
 
+import android.net.Uri
 import android.os.Bundle
 import android.text.format.DateFormat
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
 import pt.ipg.gatos.databinding.FragmentEliminarGatosBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -54,24 +58,43 @@ class EliminarGatosFragment : Fragment() {
         binding.textViewPeso.text = gato.peso.toString()
         binding.textViewRaca.text = gato.raca.nomeRaca
         if (gato.dataNascimento != null) {
-            binding.textViewDataNascimento.text = DateFormat.format("yyyy-MM-dd", livro.dataPublicacao)
+            binding.textViewDataNascimento.text = DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
         }
 
-        //binding.textViewNome.text = gato.nome
-        //binding.textViewNome.text = gato.nome
-        //binding.textViewNome.text = gato.nome
-        //binding.textViewNome.text = gato.nome
-        //binding.textViewNome.text = gato.nome
-        //binding.textViewNome.text = gato.nome
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-    companion object {
-
+    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_eliminar -> {
+                eliminar()
+                true
+            }
+            R.id.action_cancelar -> {
+                voltaListaGatos()
+                true
+            }
+            else -> false
+        }
     }
 
     private fun voltaListaGatos() {
         findNavController().navigate(R.id.action_eliminarGatos_to_ListaGatosFragment)
     }
 
-    private fun eliminar() {}
+    private fun eliminar() {
+        val enderecoGato = Uri.withAppendedPath(GatosContentProvider.ENDERECO_GATOS, gato.id.toString())
+        val numGatosEliminados = requireActivity().contentResolver.delete(enderecoGato, null, null)
+
+        if (numGatosEliminados == 1) {
+            Toast.makeText(requireContext(), getString(R.string.gato_eliminado_com_sucesso), Toast.LENGTH_LONG).show()
+            voltaListaGatos()
+        } else {
+            Snackbar.make(binding.textViewNome, getString(R.string.erro_eliminar_gato), Snackbar.LENGTH_INDEFINITE)
+        }
+
+    }
 }

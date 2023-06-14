@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         val opcaoProcessada = when (fragment) {
             is ListaGatosFragment -> (fragment as ListaGatosFragment).processaOpcaoMenu(item)
             is NovoGatoFragment -> (fragment as NovoGatoFragment).processaOpcaoMenu(item)
+            is EliminarGatosFragment -> (fragment as EliminarGatosFragment).processaOpcaoMenu(item)
             else -> false
         }
 
