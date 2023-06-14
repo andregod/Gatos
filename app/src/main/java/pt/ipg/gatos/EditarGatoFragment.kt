@@ -13,14 +13,14 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
-import pt.ipg.gatos.databinding.FragmentNovoGatoBinding
+import pt.ipg.gatos.databinding.FragmentEditarGatoBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
 private const val ID_LOADER_RACAS = 0
-class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
-    private var _binding: FragmentNovoGatoBinding? = null
+class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
+    private var _binding: FragmentEditarGatoBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,7 +31,7 @@ class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentNovoGatoBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarGatoBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -81,7 +81,7 @@ class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             return
         }
 
-        val racaId = binding.spinnerCategorias.selectedItemId
+        val racaId = binding.spinnerRacas.selectedItemId
 
         val data: Date
         val df = SimpleDateFormat("dd-MM-yyyy")
@@ -155,7 +155,7 @@ class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
      * @param loader The Loader that is being reset.
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
-        binding.spinnerCategorias.adapter = null
+        binding.spinnerRacas.adapter = null
     }
 
     /**
@@ -203,11 +203,11 @@ class NovoGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
      */
     override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
         if (data == null) {
-            binding.spinnerCategorias.adapter = null
+            binding.spinnerRacas.adapter = null
             return
         }
 
-        binding.spinnerCategorias.adapter = SimpleCursorAdapter(
+        binding.spinnerRacas.adapter = SimpleCursorAdapter(
             requireContext(),
             android.R.layout.simple_list_item_1,
             data,

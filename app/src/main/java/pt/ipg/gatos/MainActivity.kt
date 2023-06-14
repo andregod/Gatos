@@ -1,7 +1,6 @@
 package pt.ipg.gatos
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
         val opcaoProcessada = when (fragment) {
             is ListaGatosFragment -> (fragment as ListaGatosFragment).processaOpcaoMenu(item)
-            is NovoGatoFragment -> (fragment as NovoGatoFragment).processaOpcaoMenu(item)
+            is EditarGatoFragment -> (fragment as EditarGatoFragment).processaOpcaoMenu(item)
             is EliminarGatosFragment -> (fragment as EliminarGatosFragment).processaOpcaoMenu(item)
             else -> false
         }

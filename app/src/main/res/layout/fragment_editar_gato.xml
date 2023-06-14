@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="8dp"
     android:orientation="vertical"
-    tools:context=".NovoGatoFragment" >
+    tools:context=".EditarGatoFragment" >
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:text="@string/raca" />
 
         <Spinner
-            android:id="@+id/spinnerCategorias"
+            android:id="@+id/spinnerRacas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"

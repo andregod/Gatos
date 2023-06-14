@@ -46,9 +46,9 @@
         app:destination="@id/novoGatoFragment" />
 <fragment
 android:id="@+id/novoGatoFragment"
-android:name="pt.ipg.gatos.NovoGatoFragment"
+android:name="pt.ipg.gatos.EditarGatoFragment"
 android:label="@string/novo_gato_label"
-tools:layout="@layout/fragment_novo_gato">
+tools:layout="@layout/fragment_editar_gato">
 <action
     android:id="@+id/action_novoGatoFragment_to_ListaGatosFragment"
     app:destination="@id/ListaGatosFragment" />

@@ -72,6 +72,7 @@ class EliminarGatosFragment : Fragment() {
             R.id.action_eliminar -> {
                 eliminar()
                 true
+
             }
             R.id.action_cancelar -> {
                 voltaListaGatos()
