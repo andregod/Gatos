@@ -32,4 +32,6 @@
     <string name="gato_guardado_com_sucesso">Gato guardado com sucesso</string>
     <string name="erro_guardar_gato">Não foi possível guardar o gato</string>
     <string name="EliminarGato"> Eliminar Gatos </string>
+    <string name="idade">idade</string>
+    <string name="data_nasc">data de nascimento</string>
 </resources>
