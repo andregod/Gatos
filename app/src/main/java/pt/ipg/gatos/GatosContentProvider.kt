@@ -329,7 +329,7 @@ class GatosContentProvider: ContentProvider() {
             addURI(AUTORIDADE,RACAS, URI_RACAS)
             addURI(AUTORIDADE,"$RACAS/#", URI_RACA_ID)
             addURI(AUTORIDADE, GATOS, URI_GATOS)
-            addURI(AUTORIDADE, "GATOS/#", URI_GATO_ID)
+            addURI(AUTORIDADE, "$GATOS/#", URI_GATO_ID)
 
             /*
             content://pt.ipg.gatos/racas -> 100
