@@ -34,7 +34,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextNomeDono"
+            android:id="@+id/editTextCorRaca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nome do Dono" />
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextMorada"
+            android:id="@+id/editTextNomeRaca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Morada" />
@@ -120,7 +120,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextGenero"
+            android:id="@+id/editTextPorteRaca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Genero" />

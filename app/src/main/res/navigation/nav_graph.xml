@@ -83,5 +83,29 @@ tools:layout="@layout/fragment_editar_gato">
         <action
             android:id="@+id/action_listaRacasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_listaRacasFragment_to_editarRacaFragment"
+            app:destination="@id/editarRacaFragment" />
+        <action
+            android:id="@+id/action_listaRacasFragment_to_eliminarRacaFragment"
+            app:destination="@id/eliminarRacaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarRacaFragment"
+        android:name="pt.ipg.gatos.EditarRacaFragment"
+        android:label="fragment_editar_raca"
+        tools:layout="@layout/fragment_editar_raca" >
+        <action
+            android:id="@+id/action_editarRacaFragment_to_listaRacasFragment"
+            app:destination="@id/listaRacasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarRacaFragment"
+        android:name="pt.ipg.gatos.EliminarRacaFragment"
+        android:label="fragment_eliminar_raca"
+        tools:layout="@layout/fragment_eliminar_raca" >
+        <action
+            android:id="@+id/action_eliminarRacaFragment_to_listaRacasFragment"
+            app:destination="@id/listaRacasFragment" />
     </fragment>
 </navigation>

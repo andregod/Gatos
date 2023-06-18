@@ -51,4 +51,7 @@
     <string name="cor">Cor</string>
     <string name="morada">Morada</string>
     <string name="peso">Peso</string>
+    <string name="corraca">Cor da Raca</string>
+    <string name="porteraca">Porte da Raca</string>
+    <string name="nomeraca">Nome da Raca</string>
 </resources>
