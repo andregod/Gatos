@@ -56,4 +56,8 @@
     <string name="nomeraca">Nome da Raca</string>
     <string name="raca_eliminada_com_sucesso">Raca eliminada com sucesso!</string>
     <string name="erro_eliminar_raca">Erro ao eliminar raça!</string>
+    <string name="editar_raca_label">Editar Raca</string>
+    <string name="nova_raca_label">Nova Raca</string>
+    <string name="raca_guardada_com_sucesso">Raca guardada com sucesso</string>
+    <string name="erro_guardar_raca">Erro ao guardar raca</string>
 </resources>

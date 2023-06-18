@@ -31,7 +31,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextCorRaca"
