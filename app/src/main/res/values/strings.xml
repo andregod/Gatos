@@ -54,4 +54,6 @@
     <string name="corraca">Cor da Raca</string>
     <string name="porteraca">Porte da Raca</string>
     <string name="nomeraca">Nome da Raca</string>
+    <string name="raca_eliminada_com_sucesso">Raca eliminada com sucesso!</string>
+    <string name="erro_eliminar_raca">Erro ao eliminar raça!</string>
 </resources>

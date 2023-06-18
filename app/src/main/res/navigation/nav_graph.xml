@@ -98,6 +98,10 @@ tools:layout="@layout/fragment_editar_gato">
         <action
             android:id="@+id/action_editarRacaFragment_to_listaRacasFragment"
             app:destination="@id/listaRacasFragment" />
+        <argument
+            android:name="raca"
+            app:argType="pt.ipg.gatos.Raca"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/eliminarRacaFragment"
@@ -107,5 +111,8 @@ tools:layout="@layout/fragment_editar_gato">
         <action
             android:id="@+id/action_eliminarRacaFragment_to_listaRacasFragment"
             app:destination="@id/listaRacasFragment" />
+        <argument
+            android:name="raca"
+            app:argType="pt.ipg.gatos.Raca" />
     </fragment>
 </navigation>
