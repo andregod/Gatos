@@ -53,10 +53,16 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         val gato = EditarGatoFragmentArgs.fromBundle(requireArguments()).gato
 
         if (gato != null) {
-            binding.editTextTitulo.setText(gato.nome)
-            binding.editTextIsbn.setText(gato.peso.toString())
+            binding.editTextNome.setText(gato.nome)
+            binding.editTextPeso.setText(gato.peso.toString())
+            binding.editTextIdade.setText(gato.idade.toString())
+            binding.editTextCor.setText(gato.cor)
+            binding.editTextGenero.setText(gato.genero)
+            binding.editTextMorada.setText(gato.morada)
+            binding.editTextPorte.setText(gato.porteGato)
+            binding.editTextNomeDono.setText(gato.nomeDono)
             if (gato.dataNascimento != null) {
-                binding.editTextDataPub.setText(
+                binding.editTextDataNasc.setText(
                     DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
                 )
             }
@@ -91,10 +97,10 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun guardar() {
-        val nome = binding.editTextTitulo.text.toString()
+        val nome = binding.editTextNome.text.toString()
         if (nome.isBlank()) {
-            binding.editTextTitulo.error = getString(R.string.nome_obrigatorio)
-            binding.editTextTitulo.requestFocus()
+            binding.editTextNome.error = getString(R.string.nome_obrigatorio)
+            binding.editTextNome.requestFocus()
             return
         }
 
@@ -103,10 +109,10 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         val data: Date
         val df = SimpleDateFormat("dd-MM-yyyy")
         try {
-            data = df.parse(binding.editTextDataPub.text.toString())
+            data = df.parse(binding.editTextDataNasc.text.toString())
         } catch (e: Exception) {
-            binding.editTextDataPub.error = getString(R.string.data_invalida)
-            binding.editTextDataPub.requestFocus()
+            binding.editTextDataNasc.error = getString(R.string.data_invalida)
+            binding.editTextDataNasc.requestFocus()
             return
         }
 
@@ -147,7 +153,7 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
                 Toast.makeText(requireContext(), R.string.gato_guardado_com_sucesso, Toast.LENGTH_LONG).show()
                 voltaListaGatos()
             } else {
-                binding.editTextTitulo.error = getString(R.string.erro_guardar_gato)
+                binding.editTextNome.error = getString(R.string.erro_guardar_gato)
             }
         }
 
@@ -161,7 +167,7 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         )
 
         if (id == null) {
-            binding.editTextTitulo.error = getString(R.string.erro_guardar_gato)
+            binding.editTextNome.error = getString(R.string.erro_guardar_gato)
             return
         }
             Toast.makeText(
