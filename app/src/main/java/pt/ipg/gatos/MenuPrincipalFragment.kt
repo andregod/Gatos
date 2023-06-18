@@ -39,6 +39,9 @@ class MenuPrincipalFragment : Fragment() {
         binding.buttonGatos.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_ListaGatosFragment)
         }
+        binding.buttonRacas.setOnClickListener {
+            findNavController().navigate(R.id.action_MenuPrincipalFragment_to_listaRacasFragment)
+        }
 
         val activity = activity as MainActivity
         activity.fragment = this

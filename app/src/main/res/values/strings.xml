@@ -18,6 +18,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lista_gatos_label">Gatos</string>
+    <string name="lista_racas_label">Racas</string>
     <string name="adicionar">Adicionar</string>
     <string name="editar">Editar</string>
     <string name="eliminar">Eliminar</string>
@@ -44,4 +45,5 @@
     <string name="porte_obrigatorio">Deve inserir o porte</string>
     <string name="dono_obrigatorio">Deve inserir o dono</string>
     <string name="editar_gato_label">Editar Gato</string>
+    <string name="eliminar_gatos">Eliminar gato</string>
 </resources>

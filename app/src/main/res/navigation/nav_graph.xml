@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_ListaGatosFragment"
             app:destination="@id/ListaGatosFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_listaRacasFragment"
+            app:destination="@id/listaRacasFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -63,7 +66,7 @@ tools:layout="@layout/fragment_editar_gato">
     <fragment
         android:id="@+id/eliminarGatos"
         android:name="pt.ipg.gatos.EliminarGatosFragment"
-        android:label="fragment_eliminar_gatos"
+        android:label="@string/eliminar_gatos"
         tools:layout="@layout/fragment_eliminar_gatos" >
         <action
             android:id="@+id/action_eliminarGatos_to_ListaGatosFragment"
@@ -71,5 +74,14 @@ tools:layout="@layout/fragment_editar_gato">
         <argument
             android:name="gato"
             app:argType="pt.ipg.gatos.Gato" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaRacasFragment"
+        android:name="pt.ipg.gatos.ListaRacasFragment"
+        android:label="@string/lista_racas_label"
+        tools:layout="@layout/fragment_lista_racas" >
+        <action
+            android:id="@+id/action_listaRacasFragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
