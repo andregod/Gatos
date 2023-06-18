@@ -24,6 +24,7 @@ private const val ID_LOADER_RACAS = 0
 class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
     private var gato: Gato?= null
     private var _binding: FragmentEditarGatoBinding? = null
+    private var dataNasc : Calendar? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -42,6 +43,11 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.calendarViewDataNasc.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
+            if (dataNasc == null) dataNasc = Calendar.getInstance()
+            dataNasc!!.set(year, month, dayOfMonth)
+        }
+
         val loader = LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_RACAS, null, this)
 
@@ -53,6 +59,7 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
         val gato = EditarGatoFragmentArgs.fromBundle(requireArguments()).gato
 
         if (gato != null) {
+            activity.atualizaTitulo(R.string.editar_gato_label)
             binding.editTextNome.setText(gato.nome)
             binding.editTextPeso.setText(gato.peso.toString())
             binding.editTextIdade.setText(gato.idade.toString())
@@ -62,10 +69,16 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             binding.editTextPorte.setText(gato.porteGato)
             binding.editTextNomeDono.setText(gato.nomeDono)
             if (gato.dataNascimento != null) {
-                binding.editTextDataNasc.setText(
-                    DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
-                )
+                //binding.editTextDataNasc.setText(
+                   // DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
+                //)
+
+                    dataNasc = gato.dataNascimento
+                    binding.calendarViewDataNasc.date = dataNasc!!.timeInMillis
+
             }
+        } else {
+            activity.atualizaTitulo(R.string.novo_gato_label)
         }
 
         this.gato = gato
@@ -104,42 +117,82 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
             return
         }
 
-        val racaId = binding.spinnerRacas.selectedItemId
-
-        val data: Date
-        val df = SimpleDateFormat("dd-MM-yyyy")
-        try {
-            data = df.parse(binding.editTextDataNasc.text.toString())
-        } catch (e: Exception) {
-            binding.editTextDataNasc.error = getString(R.string.data_invalida)
-            binding.editTextDataNasc.requestFocus()
+        val peso = binding.editTextPeso.text.toString()
+        if (peso.isBlank()) {
+            binding.editTextPeso.error = getString(R.string.peso_obrigatorio)
+            binding.editTextPeso.requestFocus()
             return
         }
 
+        val idade = binding.editTextIdade.text.toString()
+        if (idade.isBlank()) {
+            binding.editTextIdade.error = getString(R.string.idade_obrigatoria)
+            binding.editTextIdade.requestFocus()
+            return
+        }
 
-        val calendario = Calendar.getInstance()
-        calendario.time = data
+        val cor = binding.editTextCor.text.toString()
+        if (cor.isBlank()) {
+            binding.editTextCor.error = getString(R.string.cor_obrigatoria)
+            binding.editTextCor.requestFocus()
+            return
+        }
+
+        val genero = binding.editTextGenero.text.toString()
+        if (genero.isBlank()) {
+            binding.editTextGenero.error = getString(R.string.genero_obrigatorio)
+            binding.editTextGenero.requestFocus()
+            return
+        }
+
+        val morada = binding.editTextMorada.text.toString()
+        if (morada.isBlank()) {
+            binding.editTextMorada.error = getString(R.string.morada_obrigatoria)
+            binding.editTextMorada.requestFocus()
+            return
+        }
+
+        val porte = binding.editTextPorte.text.toString()
+        if (porte.isBlank()) {
+            binding.editTextPorte.error = getString(R.string.porte_obrigatorio)
+            binding.editTextPorte.requestFocus()
+            return
+        }
+
+        val nomedono = binding.editTextNomeDono.text.toString()
+        if (nomedono.isBlank()) {
+            binding.editTextNomeDono.error = getString(R.string.dono_obrigatorio)
+            binding.editTextNomeDono.requestFocus()
+            return
+        }
+        val racaId = binding.spinnerRacas.selectedItemId
 
         if (gato == null) {
             val gato = Gato(
                 nome,
-                "?",
-                "?",
-                calendario,
-                1,
-                1.0,
-                "?",
-                "?",
-                "?",
+                cor,
+                genero,
+                dataNasc,
+                idade.toInt(),
+                peso.toDouble(),
+                nomedono,
+                morada,
+                porte,
                 Raca("?", "?", "?", racaId),
             )
             insereGato(gato)
         } else {
             val gato = gato!!
             gato.nome = nome
+            gato.cor = cor
+            gato.genero = genero
+            gato.dataNascimento = dataNasc
+            gato.idade = idade.toInt()
+            gato.peso = peso.toDouble()
+            gato.nomeDono = nomedono
+            gato.morada = morada
+            gato.porteGato = porte
             gato.raca = Raca("?", "?", "?",racaId)
-            gato.peso = 1.0
-            gato.dataNascimento = calendario
 
             alteraGato(gato)
         }

@@ -36,4 +36,12 @@
     <string name="data_nasc">data de nascimento</string>
     <string name="gato_eliminado_com_sucesso">Gato eliminado com sucesso!</string>
     <string name="erro_eliminar_gato">Erro ao eliminar o gato!</string>
+    <string name="peso_obrigatorio">Deve inserir o peso</string>
+    <string name="idade_obrigatoria">Deve inserir a idade</string>
+    <string name="cor_obrigatoria">Deve inserir a cor</string>
+    <string name="genero_obrigatorio">Deve inserir o género</string>
+    <string name="morada_obrigatoria">Deve inserir a morada</string>
+    <string name="porte_obrigatorio">Deve inserir o porte</string>
+    <string name="dono_obrigatorio">Deve inserir o dono</string>
+    <string name="editar_gato_label">Editar Gato</string>
 </resources>
