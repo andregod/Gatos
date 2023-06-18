@@ -121,9 +121,6 @@ class GatosContentProvider: ContentProvider() {
     ): Cursor? {
 
         val bd = bdOpenHelper!!.readableDatabase
-        val id =uri.lastPathSegment
-
-        // content://pt.ipg.livros/categorias/23
 
         val endereco = uriMatcher().match(uri)
 
@@ -132,6 +129,11 @@ class GatosContentProvider: ContentProvider() {
             URI_GATOS,URI_GATO_ID -> TabelaGatos(bd)
             else -> null
         }
+
+        val id =uri.lastPathSegment
+
+        // content://pt.ipg.livros/categorias/23
+
 
         val (selecao,argsSel) = when (endereco) {
             URI_RACA_ID, URI_GATO_ID -> Pair("${BaseColumns._ID}=?" , arrayOf(id))
@@ -304,16 +306,14 @@ class GatosContentProvider: ContentProvider() {
 
         val id = uri.lastPathSegment!!
 
-        return tabela.alterar(values!! , "${BaseColumns._ID}=?", arrayOf(id))
-
-
+        return tabela.alterar(values!! , "${BaseColumns._ID}", arrayOf(id))
 
     }
 
 
     companion object {
         private const val AUTORIDADE = "pt.ipg.gatos"
-        const val GATOS = "livros"
+        const val GATOS = "gatos"
         const val RACAS = "racas"
 
         private const val URI_RACAS = 100
@@ -323,8 +323,8 @@ class GatosContentProvider: ContentProvider() {
 
         private val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
 
-        public val ENDERECO_RACAS = Uri.withAppendedPath(ENDERECO_BASE, RACAS)
-        public val ENDERECO_GATOS = Uri.withAppendedPath(ENDERECO_BASE, GATOS)
+        val ENDERECO_RACAS = Uri.withAppendedPath(ENDERECO_BASE, RACAS)
+        val ENDERECO_GATOS = Uri.withAppendedPath(ENDERECO_BASE, GATOS)
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE,RACAS, URI_RACAS)
             addURI(AUTORIDADE,"$RACAS/#", URI_RACA_ID)

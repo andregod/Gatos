@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,10 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:text="Meu Pé de Laranja Lima" />
+        tools:text="Stella" />
 
     <TextView
-        android:id="@+id/textViewCor"
+        android:id="@+id/textViewLabelIdade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -31,15 +32,17 @@
         android:textColor="@color/design_default_color_primary" />
 
     <TextView
-        android:id="@+id/textViewPeso"
+        android:id="@+id/textViewIdade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:text="Peso" />
+        tools:text="Idade" />
+
+
 
     <TextView
-        android:id="@+id/textViewRaca"
+        android:id="@+id/textViewLabelRaca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -47,21 +50,125 @@
         android:textColor="@color/design_default_color_primary" />
 
     <TextView
-        android:id="@+id/textViewDono"
+        android:id="@+id/textViewRaca"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:text="Dono" />
+
+        android:text="Tuxedo"
+ />
+
+    <TextView
+        android:id="@+id/textViewLabelDono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Dono"
+        android:textColor="@color/design_default_color_primary" />
+
+
+    <TextView
+        android:id="@+id/textViewNomeDono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Andre Godinho"
+
+         />
+
+    <TextView
+        android:id="@+id/textViewLabelDataNasc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/data_nasc"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/design_default_color_primary" />
+
 
     <TextView
         android:id="@+id/textViewDataNascimento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/data_nasc"
-        android:textColor="@color/design_default_color_primary"
         tools:text="01/01/1968" />
+
+    <TextView
+        android:id="@+id/textViewLabelGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/genero"
+        android:textColor="@color/design_default_color_primary" />
+
+    <TextView
+        android:id="@+id/textViewGenero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fêmea"
+
+
+/>
+    <TextView
+        android:id="@+id/textViewLabelPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/peso"
+        android:textColor="@color/design_default_color_primary" />
+
+    <TextView
+        android:id="@+id/textViewPeso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5kg"
+
+/>
+
+    <TextView
+        android:id="@+id/textViewLabelMorada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/morada"
+        android:textColor="@color/design_default_color_primary" />
+
+    <TextView
+        android:id="@+id/textViewMorada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rua Lote 72 Guarda"
+/>
+
+    <TextView
+        android:id="@+id/textViewLabelPorte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/porte"
+        android:textColor="@color/design_default_color_primary" />
+
+    <TextView
+        android:id="@+id/textViewPorte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Médio"
+  />
+
+
+    <TextView
+        android:id="@+id/textViewLabelCor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/cor"
+        android:textColor="@color/design_default_color_primary" />
+
+    <TextView
+        android:id="@+id/textViewCor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Preto/Branca" />
+
 
 
 </LinearLayout>

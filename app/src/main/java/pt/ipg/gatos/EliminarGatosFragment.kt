@@ -13,16 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import pt.ipg.gatos.databinding.FragmentEliminarGatosBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EliminarGatosFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EliminarGatosFragment : Fragment() {
     private lateinit var gato: Gato
     private var _binding: FragmentEliminarGatosBinding? = null
@@ -54,12 +45,19 @@ class EliminarGatosFragment : Fragment() {
 
         gato = EliminarGatosFragmentArgs.fromBundle(requireArguments()).gato
 
+
         binding.textViewNome.text = gato.nome
-        binding.textViewPeso.text = gato.peso.toString()
+        binding.textViewIdade.text = gato.idade.toString()
         binding.textViewRaca.text = gato.raca.nomeRaca
+        binding.textViewNomeDono.text = gato.nomeDono
         if (gato.dataNascimento != null) {
             binding.textViewDataNascimento.text = DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
         }
+        binding.textViewGenero.text= gato.genero
+        binding.textViewPeso.text = gato.peso.toString()
+        binding.textViewMorada.text = gato.morada
+        binding.textViewPorte.text= gato.porteGato
+        binding.textViewCor.text=gato.cor
 
     }
     override fun onDestroyView() {
@@ -72,7 +70,6 @@ class EliminarGatosFragment : Fragment() {
             R.id.action_eliminar -> {
                 eliminar()
                 true
-
             }
             R.id.action_cancelar -> {
                 voltaListaGatos()
@@ -96,6 +93,5 @@ class EliminarGatosFragment : Fragment() {
         } else {
             Snackbar.make(binding.textViewNome, getString(R.string.erro_eliminar_gato), Snackbar.LENGTH_INDEFINITE)
         }
-
     }
 }

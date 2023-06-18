@@ -25,7 +25,7 @@
     <string name="novo_gato_label">Novo gato</string>
     <string name="nome">Nome</string>
     <string name="raca">Raca</string>
-    <string name="data_nascimento">Data nascimento</string>
+    <string name="data_nascimento">Data de nascimento</string>
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
     <string name="nome_obrigatorio">Deve preencher o nome</string>
@@ -34,7 +34,7 @@
     <string name="erro_guardar_gato">Não foi possível guardar o gato</string>
     <string name="EliminarGato"> Eliminar Gatos </string>
     <string name="idade">idade</string>
-    <string name="data_nasc">data de nascimento</string>
+    <string name="data_nasc">Data de nascimento</string>
     <string name="gato_eliminado_com_sucesso">Gato eliminado com sucesso!</string>
     <string name="erro_eliminar_gato">Erro ao eliminar o gato!</string>
     <string name="peso_obrigatorio">Deve inserir o peso</string>
@@ -46,4 +46,9 @@
     <string name="dono_obrigatorio">Deve inserir o dono</string>
     <string name="editar_gato_label">Editar Gato</string>
     <string name="eliminar_gatos">Eliminar gato</string>
+    <string name="genero">Género</string>
+    <string name="porte">Porte</string>
+    <string name="cor">Cor</string>
+    <string name="morada">Morada</string>
+    <string name="peso">Peso</string>
 </resources>

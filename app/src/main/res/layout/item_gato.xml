@@ -26,13 +26,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewCor" />
 
     <TextView
-        android:id="@+id/textViewIdade"
+        android:id="@+id/textViewLabelIdade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="5kg"
         android:textColor="#64801F"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewRaca" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelRaca" />
 
     <TextView
         android:id="@+id/textViewDataNasc"
@@ -51,7 +51,7 @@
         android:layout_marginLeft="220dp"
         android:text="Rua Lote 72 Guarda"
         android:textColor="#64801F"
-        app:layout_constraintStart_toEndOf="@+id/textViewIdade"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelIdade"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeDono" />
 
     <TextView
@@ -63,7 +63,7 @@
         android:layout_marginTop="16dp"
         android:text="Andre Godinho"
         android:textColor="#64801F"
-        app:layout_constraintStart_toEndOf="@+id/textViewRaca"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelRaca"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -73,7 +73,7 @@
         android:text="Preto/Branca"
         android:textColor="#64801F"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewIdade" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelIdade" />
 
     <TextView
         android:id="@+id/textViewNome"
@@ -85,7 +85,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewRaca"
+        android:id="@+id/textViewLabelRaca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tuxedo"

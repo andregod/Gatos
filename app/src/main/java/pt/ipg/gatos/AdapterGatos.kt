@@ -5,7 +5,6 @@ import android.text.format.DateFormat
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
@@ -20,10 +19,10 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
 
     inner class ViewHolderGato(contentor: View): ViewHolder(contentor) {
         private val textViewNome = contentor.findViewById<TextView>(R.id.textViewNome)
-        private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewRaca)
+        private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewLabelRaca)
         private val textViewGenero = contentor.findViewById<TextView>(R.id.textViewGenero)
         private val textViewPorte = contentor.findViewById<TextView>(R.id.textViewPorte)
-        private val textViewIdade = contentor.findViewById<TextView>(R.id.textViewIdade)
+        private val textViewIdade = contentor.findViewById<TextView>(R.id.textViewLabelIdade)
         private val textViewDataNasc = contentor.findViewById<TextView>(R.id.textViewDataNasc)
         private val textViewMorada = contentor.findViewById<TextView>(R.id.textViewMorada)
         private val textViewNomeDono = contentor.findViewById<TextView>(R.id.textViewNomeDono)
