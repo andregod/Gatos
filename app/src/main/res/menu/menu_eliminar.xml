@@ -5,7 +5,7 @@
     <item
         android:id="@+id/action_eliminar"
         android:icon="@drawable/baseline_delete_forever_24"
-        android:title="@string/EliminarGato"
+        android:title="@string/Eliminar"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_cancelar"

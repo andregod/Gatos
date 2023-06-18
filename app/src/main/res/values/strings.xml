@@ -60,4 +60,5 @@
     <string name="nova_raca_label">Nova Raca</string>
     <string name="raca_guardada_com_sucesso">Raca guardada com sucesso</string>
     <string name="erro_guardar_raca">Erro ao guardar raca</string>
+    <string name="Eliminar">Eliminar</string>
 </resources>

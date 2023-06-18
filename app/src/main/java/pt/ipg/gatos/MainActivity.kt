@@ -60,6 +60,9 @@ class MainActivity : AppCompatActivity() {
             is ListaGatosFragment -> (fragment as ListaGatosFragment).processaOpcaoMenu(item)
             is EditarGatoFragment -> (fragment as EditarGatoFragment).processaOpcaoMenu(item)
             is EliminarGatosFragment -> (fragment as EliminarGatosFragment).processaOpcaoMenu(item)
+            is ListaRacasFragment -> (fragment as ListaRacasFragment).processaOpcaoMenu(item)
+            is EditarRacaFragment -> (fragment as EditarRacaFragment).processaOpcaoMenu(item)
+            is EliminarRacaFragment -> (fragment as EliminarRacaFragment).processaOpcaoMenu(item)
             else -> false
         }
 

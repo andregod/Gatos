@@ -113,18 +113,18 @@ class ListaRacasFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun eliminarRaca() {
-       // val acao = ListaGatosFragmentDirections.actionListaGatosFragmentToEliminarGatosFragment(racaSelecionada!!)
-        //findNavController().navigate(acao)
+       val acao = ListaRacasFragmentDirections.actionListaRacasFragmentToEliminarRacaFragment(racaSelecionada!!)
+        findNavController().navigate(acao)
     }
 
     private fun editarRaca() {
-        //val acao = ListaGatosFragmentDirections.actionListaGatosFragmentToEditarGatoFragment(racaSelecionada!!)
-        //findNavController().navigate(acao)
+        val acao = ListaRacasFragmentDirections.actionListaRacasFragmentToEditarRacaFragment(racaSelecionada!!)
+        findNavController().navigate(acao)
     }
 
     private fun adicionaRaca() {
-       // val acao = ListaGatosFragmentDirections.actionListaGatosFragmentToEditarGatoFragment(null)
-        //findNavController().navigate(acao)
+       val acao = ListaRacasFragmentDirections.actionListaRacasFragmentToEditarRacaFragment(null)
+        findNavController().navigate(acao)
     }
 
     companion object {
