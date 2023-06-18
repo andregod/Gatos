@@ -1,6 +1,7 @@
 package pt.ipg.gatos
 
 import android.database.Cursor
+import android.text.format.DateFormat
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -20,7 +21,13 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
     inner class ViewHolderGato(contentor: View): ViewHolder(contentor) {
         private val textViewNome = contentor.findViewById<TextView>(R.id.textViewNome)
         private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewRaca)
-
+        private val textViewGenero = contentor.findViewById<TextView>(R.id.textViewGenero)
+        private val textViewPorte = contentor.findViewById<TextView>(R.id.textViewPorte)
+        private val textViewIdade = contentor.findViewById<TextView>(R.id.textViewIdade)
+        private val textViewDataNasc = contentor.findViewById<TextView>(R.id.textViewDataNasc)
+        private val textViewMorada = contentor.findViewById<TextView>(R.id.textViewMorada)
+        private val textViewNomeDono = contentor.findViewById<TextView>(R.id.textViewNomeDono)
+        private val textViewCor = contentor.findViewById<TextView>(R.id.textViewCor)
         init {
             contentor.setOnClickListener {
                 ViewHolderSelecionado?.desSeleciona()
@@ -35,6 +42,19 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
                 field = value
                 textViewNome.text = gato?.nome?: ""
                 textViewRaca.text = gato?.raca?.nomeRaca?: ""
+                textViewGenero.text = gato?.genero?: ""
+                textViewPorte.text = gato?.porteGato?:""
+                textViewIdade.text = gato?.idade?.toString()?:""
+                textViewDataNasc.text = gato?.dataNascimento?.toString()?:""
+                textViewMorada.text = gato?.morada?:""
+                textViewNomeDono.text = gato?.nomeDono?:""
+                textViewCor.text = gato?.cor?:""
+
+                if (gato?.dataNascimento != null) {
+                    textViewDataNasc.setText(
+                        DateFormat.format("yyyy-MM-dd", gato?.dataNascimento)
+                    )
+                }
             }
     fun seleciona() {
         ViewHolderSelecionado = this

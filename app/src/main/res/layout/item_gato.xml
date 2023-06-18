@@ -38,33 +38,32 @@
         android:id="@+id/textViewDataNasc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginLeft="220dp"
         android:text="2000-03-20"
         android:textColor="#64801F"
-        app:layout_constraintStart_toEndOf="@+id/textViewCor"
-        app:layout_constraintTop_toBottomOf="@+id/textViewMorada" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGenero" />
 
     <TextView
         android:id="@+id/textViewMorada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginStart="220dp"
+        android:layout_marginLeft="220dp"
         android:text="Rua Lote 72 Guarda"
         android:textColor="#64801F"
-        app:layout_constraintStart_toEndOf="@+id/textViewRaca"
+        app:layout_constraintStart_toEndOf="@+id/textViewIdade"
         app:layout_constraintTop_toBottomOf="@+id/textViewNomeDono" />
 
     <TextView
         android:id="@+id/textViewNomeDono"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:layout_marginLeft="250dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginLeft="228dp"
+        android:layout_marginTop="16dp"
         android:text="Andre Godinho"
         android:textColor="#64801F"
-        app:layout_constraintStart_toEndOf="@+id/textViewNome"
+        app:layout_constraintStart_toEndOf="@+id/textViewRaca"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
