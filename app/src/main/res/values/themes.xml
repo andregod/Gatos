@@ -6,4 +6,17 @@
     </style>
 
     <style name="Theme.Gatos" parent="Base.Theme.Gatos" />
+
+
+    <style name="Theme.AppSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_inset</item>
+        <item name="windowSplashScreenAnimationDuration">300</item>
+        <item name="postSplashScreenTheme">@style/Theme.Gatos</item>
+
+        <!-- Status bar and Nav bar configs -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
 </resources>

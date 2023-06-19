@@ -1,6 +1,8 @@
 package pt.ipg.gatos
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -9,7 +11,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
+
 import pt.ipg.gatos.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -25,9 +29,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     var fragment : Fragment? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
+        installSplashScreen()
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

@@ -22,10 +22,7 @@ class EditarRacaFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
     private var raca: Raca?= null
     private var _binding: FragmentEditarRacaBinding? = null
     private val binding get() = _binding!!
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
