@@ -306,7 +306,7 @@ class GatosContentProvider: ContentProvider() {
 
         val id = uri.lastPathSegment!!
 
-        return tabela.alterar(values!! , "${BaseColumns._ID}", arrayOf(id))
+        return tabela.alterar(values!!, "${BaseColumns._ID}=?", arrayOf(id))
 
     }
 
