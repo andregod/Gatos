@@ -19,10 +19,11 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
 
     inner class ViewHolderGato(contentor: View): ViewHolder(contentor) {
         private val textViewNome = contentor.findViewById<TextView>(R.id.textViewNome)
-        private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewLabelRaca)
+        private val textViewRaca = contentor.findViewById<TextView>(R.id.textViewRaca)
         private val textViewGenero = contentor.findViewById<TextView>(R.id.textViewGenero)
         private val textViewPorte = contentor.findViewById<TextView>(R.id.textViewPorte)
-        private val textViewIdade = contentor.findViewById<TextView>(R.id.textViewLabelIdade)
+        private val textViewIdade = contentor.findViewById<TextView>(R.id.textViewIdade)
+        private val textViewPeso = contentor.findViewById<TextView>(R.id.textViewPeso)
         private val textViewDataNasc = contentor.findViewById<TextView>(R.id.textViewDataNasc)
         private val textViewMorada = contentor.findViewById<TextView>(R.id.textViewMorada)
         private val textViewNomeDono = contentor.findViewById<TextView>(R.id.textViewNomeDono)
@@ -48,6 +49,7 @@ class AdapterGatos(val fragment: ListaGatosFragment) : RecyclerView.Adapter<Adap
                 textViewMorada.text = gato?.morada?:""
                 textViewNomeDono.text = gato?.nomeDono?:""
                 textViewCor.text = gato?.cor?:""
+                textViewPeso.text = gato?.peso?.toString()?: ""
 
                 if (gato?.dataNascimento != null) {
                     textViewDataNasc.setText(

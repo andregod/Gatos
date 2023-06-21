@@ -48,7 +48,7 @@ class EliminarGatosFragment : Fragment() {
 
         binding.textViewNome.text = gato.nome
         binding.textViewIdade.text = gato.idade.toString()
-        binding.textViewRaca.text = gato.raca.nomeRaca
+        binding.textViewRaca1.text = gato.raca.nomeRaca
         binding.textViewNomeDono.text = gato.nomeDono
         if (gato.dataNascimento != null) {
             binding.textViewDataNascimento.text = DateFormat.format("yyyy-MM-dd", gato.dataNascimento)
