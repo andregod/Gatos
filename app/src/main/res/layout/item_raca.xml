@@ -5,32 +5,59 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    android:paddingBottom="8dp">>
+    android:paddingBottom="8dp">
 
     <TextView
-        android:id="@+id/textViewNomeRaca"
+        android:id="@+id/textViewLabelPorteRaca1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tuxedo"
-        android:textColor="#E91E63"
+        android:text="Porte normal da Raça:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelRaca1" />
+
+    <TextView
+        android:id="@+id/textViewLabelRaca1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome da Raça:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewCorRaca"
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Preto/Branca"
-        android:textColor="#64801F"
+        android:text="Cor típica da Raça:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPorteRaca" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLabelPorteRaca1" />
 
-    <TextView
-        android:id="@+id/textViewPorteRaca"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Médio"
-        android:textColor="#64801F"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeRaca" />
+    <LinearLayout
+        android:layout_width="116dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/textViewLabelPorteRaca1"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewNomeRaca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuxedo"
+            android:textColor="#E91E63" />
+
+        <TextView
+            android:id="@+id/textViewPorteRaca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Médio"
+            android:textColor="#64801F" />
+
+        <TextView
+            android:id="@+id/textViewCorRaca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preto/Branca"
+            android:textColor="#64801F" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
