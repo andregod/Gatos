@@ -263,7 +263,9 @@ class EditarGatoFragment : Fragment() , LoaderManager.LoaderCallbacks<Cursor> {
      * @param loader The Loader that is being reset.
      */
     override fun onLoaderReset(loader: Loader<Cursor>) {
+        if (_binding != null) {
         binding.spinnerRacas.adapter = null
+    }
     }
 
     /**
