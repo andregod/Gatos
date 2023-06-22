@@ -24,7 +24,7 @@ class BDInstrumentedTest {
         InstrumentationRegistry.getInstrumentation().targetContext
     @Before
     fun apagaBaseDados(){
-        getAppContext().deleteDatabase(BdGatosOpenHelper.NOME_BASE_DADOS)
+        //getAppContext().deleteDatabase(BdGatosOpenHelper.NOME_BASE_DADOS)
     }
 
     @Test
@@ -60,18 +60,18 @@ class BDInstrumentedTest {
     fun consegueInserirGatos() {
         val bd = getWritableDatabase()
 
-        val raca = Raca("Tuxedo", "Branco/Preto", "Médio")
+        val raca = Raca("Scottish", "Branco/Preto", "Médio")
         insereRaca(bd, raca)
 
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
 
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
+        val gato = Gato("Luna", "Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
         insereGato(bd,gato)
 
         val dataNasc2= Calendar.getInstance()
         dataNasc2.set(2020, 3, 1)
-        val gato2 = Gato("Félix", "Laranja", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca)
+        val gato2 = Gato("Tubias", "Branco", "Macho", dataNasc, 38, 4.0 ,"Vasco", "Rua Gambelas" , "Grande", raca)
         insereGato(bd, gato2)
     }
 
@@ -79,7 +79,7 @@ class BDInstrumentedTest {
     fun consegueLerGatos() {
         val bd = getWritableDatabase()
 
-        val raca = Raca("Tuxedo", "Branco/Preto", "Medio")
+        val raca = Raca("Kotlin", "Azul", "Medio")
         insereRaca(bd, raca)
 
         val dataNasc= Calendar.getInstance()
@@ -132,7 +132,7 @@ class BDInstrumentedTest {
     fun consegueLerRacas() {
         val bd = getWritableDatabase()
 
-        val racaTux= Raca("Tuxedo", "Branco/Preto","Médio")
+        val racaTux= Raca("Bombai", "Preto","Grande")
         insereRaca(bd,racaTux)
 
         val racaPersa = Raca("Persa", "Laranja/Branco", "Médio")
@@ -167,10 +167,10 @@ class BDInstrumentedTest {
     fun consegueAlterarRacas()  {
         val bd = getWritableDatabase()
 
-        val raca = Raca("Maine", "Pequeno", "Branco")
+        val raca = Raca("Maine", "Branco", "Pequeno")
         insereRaca(bd,raca)
 
-        raca.nomeRaca = "Poesia"
+        raca.nomeRaca = "Persa"
         //Adicionar restantes campos
 
 
@@ -189,15 +189,15 @@ class BDInstrumentedTest {
     fun consegueAlterarGatos()  {
         val bd = getWritableDatabase()
 
-        val raca = Raca("Maine", "Pequeno", "Branco")
+        val raca = Raca("Maine", "Branco", "Pequeno")
         insereRaca(bd,raca)
 
-        val raca2 = Raca("MaineGrande", "Pequeno", "Branco")
+        val raca2 = Raca("Maine Grande", "Branco", "Grande")
         insereRaca(bd,raca2)
 
         val dataNasc= Calendar.getInstance()
         dataNasc.set(2023, 2, 1)
-        val gato = Gato("Stella", "Branco/Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
+        val gato = Gato("Luna", "Preto", "Femea", dataNasc, 3, 1.1 ,"Andre Godinho", "Rua Raul de Matos" , "Medio", raca)
         insereGato(bd,gato)
 
 

@@ -61,4 +61,6 @@
     <string name="raca_guardada_com_sucesso">Raca guardada com sucesso</string>
     <string name="erro_guardar_raca">Erro ao guardar raca</string>
     <string name="Eliminar">Eliminar</string>
+    <string name="apagar_gato_label">Apagar Gato</string>
+    <string name="apagar_raca_label">Apagar Raça</string>
 </resources>

@@ -35,7 +35,6 @@ class EliminarGatosFragment : Fragment() {
         _binding = FragmentEliminarGatosBinding.inflate(inflater, container, false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,6 +44,7 @@ class EliminarGatosFragment : Fragment() {
 
         gato = EliminarGatosFragmentArgs.fromBundle(requireArguments()).gato
 
+        activity.atualizaTitulo(R.string.apagar_gato_label)
 
         binding.textViewNome.text = gato.nome
         binding.textViewIdade.text = gato.idade.toString()

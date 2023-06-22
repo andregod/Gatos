@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewLabelPorteRaca1" />
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="116dp"
         android:layout_height="68dp"
         android:layout_marginStart="10dp"
@@ -59,5 +60,14 @@
             android:layout_height="wrap_content"
             android:text="Preto/Branca"
             android:textColor="#64801F" />
+
     </LinearLayout>
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 </androidx.constraintlayout.widget.ConstraintLayout>

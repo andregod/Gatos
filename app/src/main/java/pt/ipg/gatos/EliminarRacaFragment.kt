@@ -43,7 +43,7 @@ class EliminarRacaFragment : Fragment() {
         activity.idMenuAtual = R.menu.menu_eliminar
 
         raca = EliminarRacaFragmentArgs.fromBundle(requireArguments()).raca
-
+        activity.atualizaTitulo(R.string.apagar_raca_label)
 
         binding.textViewNomeRaca.text= raca.nomeRaca
         binding.textViewPorteRaca.text= raca.PorteRaca
